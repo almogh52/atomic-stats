@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Burbank";
+  src: url("/static/Burbank.ttf");
+};
+
+$mdc-typography-styles-headline3: (
+  font-family: "Burbank"
+);
+
+$mdc-typography-styles-headline4: (
+  font-family: "Burbank"
+);
+
+$mdc-typography-styles-headline5: (
+  font-family: "Burbank"
+);
+
+@import "@material/select/mixins";
+@import "@material/ripple/mixins";
+@import "@material/typography/mdc-typography";
+
+.atomic-select {
+  @include mdc-select-container-fill-color(secondary);
+
+  float: left;
+}
+
+.atomic-select option {
+  color: black;
+}
+
+.atomic-select .mdc-select__native-control {
+  // Remove the html arrow of the select in Firefox
+  -moz-appearance: none !important;
+  // Remove the html arrow of the select in Chrome
+  -webkit-appearance: none !important;
+
+  color: white !important;
+}
+
+// Remove the html arrow of the select in IE
+.atomic-select .mdc-select__native-control::-ms-expand {
+  display: none;
+
+  color: white !important;
+}
+
+.atomic-divider {
+  border-color: var(--divider-color);
+}
+
+.atomic-stat-tile {
+  @include mdc-states-base-color(white);
+}
+
+.atomic-season-range-select {
+  margin-right: 20px;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "atomic-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "author": "Almog Hamdani",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^0.2.1-canary.1",
+    "@zeit/next-sass": "^0.2.1-canary.1",
+    "chart.js": "^2.7.2",
+    "express": "^4.16.3",
+    "hoek": "^5.0.3",
+    "next": "^6.1.1-canary.3",
+    "nextjs-dynamic-routes": "^2.1.8",
+    "node-fetch": "^2.2.0",
+    "react": "^16.4.1",
+    "react-chartjs-2": "^2.7.4",
+    "react-dom": "^16.4.1",
+    "rmwc": "^1.8.3"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.1"
+  }
+}

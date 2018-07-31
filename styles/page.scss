@@ -1,0 +1,189 @@
+@import "@material/typography/mixins";
+@import "@material/ripple/mixins";
+@import "@material/textfield/mixins";
+@import "@material/top-app-bar/mixins";
+@import "@material/drawer/mixins";
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+      @content;
+  }
+
+  @-moz-keyframes #{$name} {
+      @content;
+  }
+
+  @keyframes #{$name} {
+      @content;
+  }
+}
+
+@mixin animation ($delay, $duration, $animation) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+}
+
+:root {
+  // Set theme colors
+  --mdc-theme-primary: #00e676 !important;
+  --mdc-theme-secondary: #27272F !important;
+  --mdc-theme-on-primary: #ffffff !important;
+  --mdc-theme-on-secondary: #ffffff !important;
+
+  --drawer-color: #33333D;
+
+  --divider-color: #505060;
+
+  --bg-image: url("https://images8.alphacoders.com/903/903580.png")
+}
+
+.atomic-app-bar {
+  // Make on top of everything
+  z-index: 1;
+
+  margin: 0 0;
+
+  background-color: var(--mdc-theme-secondary) !important;
+}
+
+.atomic-drawer {
+  // Fix the position of the drawer and make it fullscreen
+  position: fixed;
+  height: 100%;
+}
+
+.atomic-drawer .mdc-drawer__drawer {
+  background-color: var(--drawer-color) !important;
+}
+
+.atomic-drawer .mdc-drawer__drawer * {
+  @include mdc-states-base-color(white);
+
+  color: var(--mdc-theme-primary) !important;
+}
+
+@include keyframes("move-right")
+{
+  from {padding-left: 0px;}
+  to {padding-left: calc(239px);}
+}
+
+@include keyframes("move-left")
+{
+  from {padding-left: calc(239px);}
+  to {padding-left: 0px;}
+}
+
+.atomic-content-wrapper {
+  // Set the initial animation as the opening animation
+  @include animation(0, 250ms, move-right);
+  /*animation-name: move-right;
+  animation-duration: 250ms;*/
+  padding-left: calc(239px);
+
+  margin-bottom: 0px;
+
+  // Set the image as the bg image
+  background-image: var(--bg-image) !important;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  min-height: calc(100vh - 64px);
+}
+
+.atomic-search-field {
+  border-radius: 5px;
+  min-width: 30%;
+
+  float: left;
+
+  margin-left: auto;
+
+  // Set right distance to 10px
+  margin-right: 10px;
+
+  // Set background color as secondary color
+  :not(.mdc-text-field--disabled):not(.mdc-line-ripple) {
+    background-color: var(--mdc-theme-secondary) !important;
+  }
+
+  .mdc-floating-label {
+    color: var(--mdc-theme-primary) !important; 
+  }
+}
+
+.atomic-icon-toggle-selected {
+  color: #1976d2 !important;
+}
+
+.atomic-search-field .mdc-notched-outline, .atomic-search-field .mdc-notched-outline__idle {
+  border-radius: 10px !important;
+}
+
+.atomic-search-field input {
+  // Set the font of the search field
+  @include mdc-typography(headline5);
+
+  // Set the color to white and align text in the middle
+  color: white !important;
+  text-align: center;
+}
+
+.mdc-floating-label--float-above {
+  // Make the floating label of the search field be same as the primary color - FIX BUG
+  color: var(--mdc-theme-primary) !important;
+}
+
+.atomic-search-wrapper {
+  height: 200px;
+  min-width: 100%;
+
+  // Align vertically children
+  display: flex;
+  align-items: center;
+}
+
+.atomic-icon-radio-button {
+  float: left;
+}
+
+.atomic-icon-radio-group {
+  // Align vertically children
+  display: flex;
+  align-items: center;
+}
+
+.atomic-search-platform-radio {
+  float: left;
+
+  margin-left: auto;
+
+  min-height: 56px !important;
+}
+
+.atomic-search-button {
+  border-radius: 5px !important;
+
+  float: left;
+  margin-right: auto;
+}
+
+.atomic-content {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
