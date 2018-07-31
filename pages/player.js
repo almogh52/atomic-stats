@@ -73,7 +73,7 @@ export default class Player extends Component {
       datasets: [{
         data: [],
         backgroundColor: [
-          '#2979ff',
+          '#00b0ff',
           '#76ff03',
           '#ff9100'
         ]
@@ -108,7 +108,7 @@ export default class Player extends Component {
         borderColor: '#ffffff',
         borderWidth: 2,
         backgroundColor: [
-          '#2979ff',
+          '#00b0ff',
           '#76ff03',
           '#ff9100'
         ]
@@ -213,7 +213,7 @@ export default class Player extends Component {
         </Dialog>
 
         <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
-          <AtomicCard className="atomic-player-stats-card" title={this.props.stats.displayName} titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="970px">
+          <AtomicCard className="atomic-player-total-stats-card" title={this.props.stats.displayName} titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="970px">
             <div className="atomic-section">
               <Select className="atomic-select atomic-season-range-select"
                 box
@@ -259,11 +259,9 @@ export default class Player extends Component {
           </AtomicCard>
 
           <div className="atomic-player-stats" style={{ paddingTop: "50px", display: "flex", justifyContent: "space-evenly" }}>
-            <AtomicCard className="atomic-player-solo-card" title="Solo" subtitle={ numberWithCommas(this.props.stats.stats[this.state.seasonRange][this.state.platform].solo.matches) + " Matches"} titleSize="headline4" titleColor="#00b0ff" outlineColor="#00b0ff" backgroundColor="var(--drawer-color)" width="350px" maxWidth="970px">
-              <GridList style={{ display: "flex" }}>
-                <AtomicStatMiniTile className="atomic" title="Score" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].solo.score} />
-              </GridList>
-            </AtomicCard>
+            <AtomicModeStatsCard keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top10: "Top 10", top25: "Top 25", kpm: "Kills per Match", spm: "Score per Match" }} title="Solo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].solo} color="#00b0ff" />
+            <AtomicModeStatsCard keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top5: "Top 5", top12: "Top 12", kpm: "Kills per Match", spm: "Score per Match" }} title="Duo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].duo} color="#76ff03" />
+            <AtomicModeStatsCard keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top3: "Top 3", top6: "Top 6", kpm: "Kills per Match", spm: "Score per Match" }} title="Squad" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].squad} color="#ff9100" />
           </div>
         </div>
       </Page>
@@ -271,27 +269,36 @@ export default class Player extends Component {
   }
 }
 
-/*class AtomicStatTile2 extends Component {
+class AtomicModeStatsCard extends Component {
   render() {
     return (
-      
+      <AtomicCard className={ this.props.className ? this.props.className : "" + ' ' + "atomic-mode-stats-card" } title={this.props.title} subtitle={ numberWithCommas(this.props.stats.matches) + " Matches"} titleSize="headline4" titleColor={this.props.color} outlineColor={this.props.color} backgroundColor="var(--drawer-color)" width="350px" maxWidth="970px">
+        <GridList>
+          {
+            Object.entries(this.props.keys).map( ([key, name], i) => <AtomicStatMiniTile key={i} noBorder={i == Object.entries(this.props.keys).length - 1} color={this.props.color} title={name} value={this.props.stats[key]} /> )
+          }
+        </GridList>
+      </AtomicCard>
     )
   }
-}*/
+}
 
 class AtomicStatMiniTile extends Component {
   render() {
-    var divider = this.props.borderColor ? (
-      <hr className="atomic-stat-divider" style={{ borderColor: this.props.borderColor }} />
-    ) : ""
+    var divider = this.props.noBorder ? (
+      ""
+    ) : <hr className="atomic-stat-divider" style={{ borderColor: this.props.color }} />
 
     return (
-      <Ripple onClick={ this.props.onClick }>
-        <div className={ this.props.className + ' ' + "atomic-stat-mini-tile" } style={ {...this.props.style, height: "40px", width: "300px", display: "flex", alignItems: "center", justifyContent: "space-between"} }>
-          <Typography use="body1">{ this.props.title }</Typography>
-          <Typography use="body2" style={{ color: "var(--mdc-theme-primary)" }}>{ numberWithCommas(this.props.value) }</Typography>
-        </div>
-      </Ripple>
+      <div className={ this.props.className ? this.props.className : "" + ' ' + "atomic-stat-mini-tile" } style={ {...this.props.style} }>
+        <Ripple onClick={ this.props.onClick }>
+          <div style={{ minWidth: "320px", height: "35px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <Typography use="body1" style={{ paddingLeft: "5px", color: "white" }}>{ this.props.title }</Typography>
+            <Typography use="body2" style={{ paddingRight: "5px", color: this.props.color }}>{ numberWithCommas(this.props.value) }</Typography>
+          </div>
+        </Ripple>
+        {divider}
+      </div>
     )
   }
 }
@@ -300,7 +307,7 @@ class AtomicStatTile extends Component {
   render() {
     return (
       <Ripple onClick={ this.props.onClick }>
-        <GridTile style={{ width: "180px" }} className={ this.props.className + ' ' + "atomic-stat-tile" }>
+        <GridTile style={{ width: "180px" }} className={ this.props.className ? this.props.className : "" + ' ' + "atomic-stat-tile" }>
           <GridTilePrimary style={{ backgroundColor: "var(--mdc-theme-secondary)" }}>
             <div style={{ minHeight: "78px", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <Typography use="headline4" style={{ color: "var(--mdc-theme-primary)" }}>{ numberWithCommas(this.props.value) }</Typography>
@@ -320,7 +327,7 @@ class AtomicCard extends Component {
     var polygon = "polygon(20px 0%, 100% 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 100%, 0% 20px)";
 
     return (
-      <div className={ this.props.className + ' ' + "atomic-card" } style={ this.props.style }>
+      <div className={ this.props.className ? this.props.className : "" + ' ' + "atomic-card" } style={ this.props.style }>
         <Card style={{ maxWidth: this.props.maxWidth, width: this.props.width, backgroundColor: this.props.outlineColor, clipPath: polygon, WebkitClipPath: polygon, margin: "auto" }} className="atomic-outer-card">
           <Card style={{ maxWidth: this.props.maxWidth, clipPath: polygon, WebkitClipPath: polygon, backgroundColor: this.props.backgroundColor, margin: "4px 4px" }} className="atomic-inner-card">
             <div className="atomic-card-title" style={{ display: "flex", justifyContent: "space-between", paddingTop: "8px", display: "flex", alignItems: "center", paddingLeft: "20px", width: "100%", height: "60px", backgroundColor: "var(--mdc-theme-secondary)" }}>

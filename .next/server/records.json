@@ -75,11 +75,11 @@
   },
   "chunks": {
     "byName": {
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/_document.js": 0,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/index.js": 1,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/player.js": 2,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/_app.js": 3,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/_error.js": 4
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/_document.js": 0,
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/index.js": 1,
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/player.js": 2,
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/_app.js": 3,
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/_error.js": 4
     },
     "bySource": {},
     "usedIds": [

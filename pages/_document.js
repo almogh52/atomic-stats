@@ -26,14 +26,14 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossOrigin="anonymous" />
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <script>
-            {
-              `(adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-9169116196998945",
-                enable_page_level_ads: true
-              });`
-            }
-          </script>
+          <script
+            dangerouslySetInnerHTML={{ __html:
+              '(adsbygoogle = window.adsbygoogle || []).push({ \
+                google_ad_client: "ca-pub-9169116196998945", \
+                enable_page_level_ads: true \
+              });'
+            }}
+          />
           <title>Atomic Stats</title>
         </Head>
         <body style={{margin: "0 0 0 0", padding: "0px 0px 0px 0px"}}>

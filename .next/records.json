@@ -1300,10 +1300,10 @@
       "static/runtime/webpack.js": 1,
       "styles": 2,
       "static/runtime/main.js": 3,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/index.js": 4,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/player.js": 5,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/_app.js": 6,
-      "static/a4df5177-7f16-48e3-92de-8a3aa1c89c0b/pages/_error.js": 7
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/index.js": 4,
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/player.js": 5,
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/_app.js": 6,
+      "static/25187bc1-e2a8-42e7-a222-7ea47496aa64/pages/_error.js": 7
     },
     "bySource": {},
     "usedIds": [

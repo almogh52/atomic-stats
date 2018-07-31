@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/document */ "next/document");
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/almog/Desktop/idk/sima/pages/_document.js";
+var _jsxFileName = "/Users/almog/Desktop/atomic-stats-fixed/pages/_document.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -221,11 +221,17 @@ function (_Document) {
           lineNumber: 28
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+        dangerouslySetInnerHTML: {
+          __html: '(adsbygoogle = window.adsbygoogle || []).push({ \
+                google_ad_client: "ca-pub-9169116196998945", \
+                enable_page_level_ads: true \
+              });'
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 29
         }
-      }, "(adsbygoogle = window.adsbygoogle || []).push({\n                google_ad_client: \"ca-pub-9169116196998945\",\n                enable_page_level_ads: true\n              });"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 37
