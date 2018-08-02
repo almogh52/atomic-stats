@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 
-import Page from '../components/page.js';
+import Page from '../components/page';
 import '../styles/player.scss';
 
 import { Select } from 'rmwc/Select';
 import { Typography } from 'rmwc/Typography';
-import { Card } from 'rmwc/Card';
 import { 
   GridList, 
   GridTile,   
@@ -27,8 +26,28 @@ import { Ripple } from 'rmwc/Ripple';
 
 import { Bar, Doughnut } from 'react-chartjs-2';
 
+import AtomicCard from '../components/atomic-card';
+
 const numberWithCommas = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+const doughnutCallbacks = { 
+  label: function(tooltipItem, data) { 
+    var dataset = data.datasets[tooltipItem.datasetIndex];
+    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+    var total = meta.total;
+    var currentValue = dataset.data[tooltipItem.index];
+    var percentage = parseFloat((currentValue/total*100).toFixed(1));
+
+    // Add commas
+    currentValue = currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    return currentValue + ' (' + percentage + '%)';
+  },
+  title: function(tooltipItem, data) {
+    return data.labels[tooltipItem[0].index];
+  }
 }
 
 export default class Player extends Component {
@@ -72,28 +91,24 @@ export default class Player extends Component {
       labels: [],
       datasets: [{
         data: [],
-        backgroundColor: [
-          '#00b0ff',
-          '#76ff03',
-          '#ff9100'
-        ]
+        backgroundColor: []
       }]
     }
     
     var modes = {
-      'Solo': this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key],
-      'Duo': this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key],
-      'Squad': this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key]
+      'Solo': { value: this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key], color: '#00b0ff' },
+      'Duo': { value: this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key], color: '#76ff03' },
+      'Squad': { value: this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key], color: '#ff9100' },
     }
 
     // Add to the data only the data that isn't 0
     for (var mode in modes)
     {
-      if (modes[mode] != 0)
+      if (modes[mode].value != 0)
       {
-        console.log(data);
         data.labels.push(mode);
-        data.datasets[0].data.push(modes[mode]);
+        data.datasets[0].data.push(modes[mode].value);
+        data.datasets[0].backgroundColor.push(modes[mode].color)
       }
     }
 
@@ -107,28 +122,24 @@ export default class Player extends Component {
         data: [],
         borderColor: '#ffffff',
         borderWidth: 2,
-        backgroundColor: [
-          '#00b0ff',
-          '#76ff03',
-          '#ff9100'
-        ]
+        backgroundColor: []
       }]
     }
 
     var modes = {
-      'Solo': this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key],
-      'Duo': this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key],
-      'Squad': this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key]
+      'Solo': { value: this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key], color: '#00b0ff' },
+      'Duo': { value: this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key], color: '#76ff03' },
+      'Squad': { value: this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key], color: '#ff9100' },
     }
 
     // Add to the data only the data that isn't 0
     for (var mode in modes)
     {
-      if (modes[mode] != 0)
+      if (modes[mode].value != 0)
       {
-        console.log(data);
         data.labels.push(mode);
-        data.datasets[0].data.push(modes[mode]);
+        data.datasets[0].data.push(modes[mode].value);
+        data.datasets[0].backgroundColor.push(modes[mode].color)
       }
     }
 
@@ -181,14 +192,12 @@ export default class Player extends Component {
 
     if (this.state.chartType === 'doughnut')
     {
-      statChart = <Doughnut data={ this.createDoughnutData(this.state.chartData) } legend={{ labels: { fontColor: "#ffffff" } }} options={{ tooltips: { callbacks: { label: function(tooltipItem, data) { var value = data.datasets[0].data[tooltipItem.index]; value = value.toString(); value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ","); return value; } } } }} />;
+      statChart = <Doughnut data={ this.createDoughnutData(this.state.chartData) } legend={{ labels: { fontColor: "#ffffff" } }} options={{ tooltips: { callbacks: doughnutCallbacks } }} />;
     } else if (this.state.chartType === 'bar') {
       statChart = <Bar data={ this.createBarData(this.state.chartData) } legend={{ display: false, fontColor: "#ffffff" }} options={{ scales: { xAxes: [{ ticks: { fontColor: "white" }, gridLines: { color: "#424242" } }], yAxes: [{ ticks: { beginAtZero: true, max: this.state.chartBarMax ? this.state.chartBarMax : 100, fontColor: "white" }, gridLines: { color: "#424242" } }] } }}/>;
     }
 
     var kdChartMax = Math.ceil(Math.max(this.props.stats.stats[this.state.seasonRange][this.state.platform].solo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].duo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].squad['kd']) / 10) * 10
-
-    var matches;
 
     return (
       <Page>
@@ -213,7 +222,7 @@ export default class Player extends Component {
         </Dialog>
 
         <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
-          <AtomicCard className="atomic-player-total-stats-card" title={this.props.stats.displayName} titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="970px">
+          <AtomicCard className="atomic-player-total-stats-card" title={this.props.stats.displayName} titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1150px">
             <div className="atomic-section">
               <Select className="atomic-select atomic-season-range-select"
                 box
@@ -251,6 +260,7 @@ export default class Player extends Component {
                 <AtomicStatTile onClick={ () => this.setState({ chartData: 'score', chartType: 'doughnut', chartTitle: "Score" }) } title="Score" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.score} />
                 <AtomicStatTile onClick={ () => this.setState({ chartData: 'matches', chartType: 'doughnut', chartTitle: "Matches" }) } title="Matches" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.matches} />
                 <AtomicStatTile onClick={ () => this.setState({ chartData: 'wins', chartType: 'doughnut', chartTitle: "Wins" }) } title="Wins" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.wins} />
+                <AtomicStatTile onClick={ () => this.setState({ chartData: 'kills', chartType: 'doughnut', chartTitle: "Kills" }) } title="Kills" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kills} />
                 <AtomicStatTile onClick={ () => this.setState({ chartData: 'kd', chartType: 'bar', chartTitle: "K/D Ratio", chartBarMax: kdChartMax }) } title="K/D Ratio" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kd} />
                 <AtomicStatTile onClick={ () => this.setState({ chartData: 'winrate', chartType: 'bar', chartTitle: "Win %", chartBarMax: 100 }) } title="Win %" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.winrate} />
               </GridList>
@@ -259,9 +269,9 @@ export default class Player extends Component {
           </AtomicCard>
 
           <div className="atomic-player-stats" style={{ paddingTop: "50px", display: "flex", justifyContent: "space-evenly" }}>
-            <AtomicModeStatsCard keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top10: "Top 10", top25: "Top 25", kpm: "Kills per Match", spm: "Score per Match" }} title="Solo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].solo} color="#00b0ff" />
-            <AtomicModeStatsCard keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top5: "Top 5", top12: "Top 12", kpm: "Kills per Match", spm: "Score per Match" }} title="Duo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].duo} color="#76ff03" />
-            <AtomicModeStatsCard keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top3: "Top 3", top6: "Top 6", kpm: "Kills per Match", spm: "Score per Match" }} title="Squad" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].squad} color="#ff9100" />
+            <AtomicModeStatsCard tops={['10', '25']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top10: "Top 10", top25: "Top 25", kpm: "Kills per Match", spm: "Score per Match" }} title="Solo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].solo} color="#00b0ff" />
+            <AtomicModeStatsCard tops={['5', '12']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top5: "Top 5", top12: "Top 12", kpm: "Kills per Match", spm: "Score per Match" }} title="Duo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].duo} color="#76ff03" />
+            <AtomicModeStatsCard tops={['3', '6']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top3: "Top 3", top6: "Top 6", kpm: "Kills per Match", spm: "Score per Match" }} title="Squad" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].squad} color="#ff9100" />
           </div>
         </div>
       </Page>
@@ -270,9 +280,44 @@ export default class Player extends Component {
 }
 
 class AtomicModeStatsCard extends Component {
+  createData() {
+    var data = {
+      labels: [],
+      datasets: [{
+        data: [],
+        backgroundColor: []
+      }]
+    }
+    
+    var top1 = 'Top ' + this.props.tops[0]
+    var top2 = 'Top ' + this.props.tops[1]
+
+    var keys = {
+      'Defeats': { value: this.props.stats.matches - this.props.stats.wins - (this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins) - (this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins), color: '#f44336' }, 
+      'Wins': { value: this.props.stats.wins, color: "#2196f3" },
+      [top1]: { value: this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins, color: "#4caf50" },
+      [top2]: { value: this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]], color: "#ff9800" }
+    }
+
+    // Add to the data only the data that isn't 0
+    for (var key in keys)
+    {
+      if (keys[key].value != 0)
+      {
+        data.labels.push(key);
+        data.datasets[0].data.push(keys[key].value);
+        data.datasets[0].backgroundColor.push(keys[key].color)
+      }
+    }
+
+    return (data)
+  }
+
   render() {
     return (
       <AtomicCard className={ this.props.className ? this.props.className : "" + ' ' + "atomic-mode-stats-card" } title={this.props.title} subtitle={ numberWithCommas(this.props.stats.matches) + " Matches"} titleSize="headline4" titleColor={this.props.color} outlineColor={this.props.color} backgroundColor="var(--drawer-color)" width="350px" maxWidth="970px">
+        <Doughnut style={{ paddingBottom: "10px" }} data={ this.createData() } legend={{ labels: { fontColor: "#ffffff" } }} options={{ layout: { padding: { bottom: 10 } }, tooltips: { callbacks: doughnutCallbacks } }} />
+        <hr className="atomic-stat-divider" style={{ borderColor: this.props.color }} />
         <GridList>
           {
             Object.entries(this.props.keys).map( ([key, name], i) => <AtomicStatMiniTile key={i} noBorder={i == Object.entries(this.props.keys).length - 1} color={this.props.color} title={name} value={this.props.stats[key]} /> )
@@ -318,28 +363,6 @@ class AtomicStatTile extends Component {
           </GridTileSecondary>
         </GridTile>
       </Ripple>
-    )
-  }
-}
-
-class AtomicCard extends Component {
-  render() {
-    var polygon = "polygon(20px 0%, 100% 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 100%, 0% 20px)";
-
-    return (
-      <div className={ this.props.className ? this.props.className : "" + ' ' + "atomic-card" } style={ this.props.style }>
-        <Card style={{ maxWidth: this.props.maxWidth, width: this.props.width, backgroundColor: this.props.outlineColor, clipPath: polygon, WebkitClipPath: polygon, margin: "auto" }} className="atomic-outer-card">
-          <Card style={{ maxWidth: this.props.maxWidth, clipPath: polygon, WebkitClipPath: polygon, backgroundColor: this.props.backgroundColor, margin: "4px 4px" }} className="atomic-inner-card">
-            <div className="atomic-card-title" style={{ display: "flex", justifyContent: "space-between", paddingTop: "8px", display: "flex", alignItems: "center", paddingLeft: "20px", width: "100%", height: "60px", backgroundColor: "var(--mdc-theme-secondary)" }}>
-              <Typography use={this.props.titleSize} style={{ color: this.props.titleColor }}>{this.props.title}</Typography>
-              <Typography use="headline5" style={{ marginRight: "35px", color: "white" }}>{this.props.subtitle}</Typography>
-            </div>
-            <div className="atomic-card-content" style={{ padding: "10px 10px" }}>
-              {this.props.children}
-            </div>
-          </Card>
-        </Card>
-      </div>
     )
   }
 }

@@ -3,6 +3,145 @@ __NEXT_REGISTER_PAGE('/player', function() {
             var comp =
         (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/player.js"],{
 
+/***/ "./components/atomic-card.js":
+/*!***********************************!*\
+  !*** ./components/atomic-card.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AtomicCard; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var rmwc_Typography__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rmwc/Typography */ "./node_modules/rmwc/Typography/index.js");
+/* harmony import */ var rmwc_Typography__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(rmwc_Typography__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var rmwc_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rmwc/Card */ "./node_modules/rmwc/Card/index.js");
+/* harmony import */ var rmwc_Card__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(rmwc_Card__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/almog/Desktop/atomic-stats 3/components/atomic-card.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var AtomicCard =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(AtomicCard, _Component);
+
+  function AtomicCard() {
+    _classCallCheck(this, AtomicCard);
+
+    return _possibleConstructorReturn(this, (AtomicCard.__proto__ || Object.getPrototypeOf(AtomicCard)).apply(this, arguments));
+  }
+
+  _createClass(AtomicCard, [{
+    key: "render",
+    value: function render() {
+      var _ref;
+
+      var polygon = "polygon(20px 0%, 100% 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 100%, 0% 20px)";
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: this.props.className ? this.props.className : "" + ' ' + "atomic-card",
+        style: this.props.style,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Card__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        style: {
+          maxWidth: this.props.maxWidth,
+          width: this.props.width,
+          backgroundColor: this.props.outlineColor,
+          clipPath: polygon,
+          WebkitClipPath: polygon,
+          margin: "auto"
+        },
+        className: "atomic-outer-card",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 12
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Card__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        style: {
+          maxWidth: this.props.maxWidth,
+          clipPath: polygon,
+          WebkitClipPath: polygon,
+          backgroundColor: this.props.backgroundColor,
+          margin: "4px 4px"
+        },
+        className: "atomic-inner-card",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "atomic-card-title",
+        style: (_ref = {
+          display: "flex",
+          justifyContent: "space-between",
+          paddingTop: "8px"
+        }, _defineProperty(_ref, "display", "flex"), _defineProperty(_ref, "alignItems", "center"), _defineProperty(_ref, "paddingLeft", "20px"), _defineProperty(_ref, "width", "100%"), _defineProperty(_ref, "height", "60px"), _defineProperty(_ref, "backgroundColor", "var(--mdc-theme-secondary)"), _ref),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        use: this.props.titleSize,
+        style: {
+          color: this.props.titleColor
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        }
+      }, this.props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+        use: "headline5",
+        style: {
+          marginRight: "35px",
+          color: "white"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        }
+      }, this.props.subtitle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "atomic-card-content",
+        style: {
+          padding: "10px 10px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        }
+      }, this.props.children))));
+    }
+  }]);
+
+  return AtomicCard;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./components/page.js":
 /*!****************************!*\
   !*** ./components/page.js ***!
@@ -30,7 +169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! material-components-web/dist/material-components-web.min.css */ "./node_modules/material-components-web/dist/material-components-web.min.css");
 /* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8__);
-var _jsxFileName = "/Users/almog/Desktop/atomic-stats-fixed/components/page.js";
+var _jsxFileName = "/Users/almog/Desktop/atomic-stats 3/components/page.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -93866,28 +94005,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! node-fetch */ "./node_modules/node-fetch/browser.js");
 /* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(node_fetch__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_page_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/page.js */ "./components/page.js");
+/* harmony import */ var _components_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/page */ "./components/page.js");
 /* harmony import */ var _styles_player_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styles/player.scss */ "./styles/player.scss");
 /* harmony import */ var _styles_player_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_styles_player_scss__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var rmwc_Select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rmwc/Select */ "./node_modules/rmwc/Select/index.js");
 /* harmony import */ var rmwc_Select__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rmwc_Select__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rmwc/Typography */ "./node_modules/rmwc/Typography/index.js");
 /* harmony import */ var rmwc_Typography__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var rmwc_Card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rmwc/Card */ "./node_modules/rmwc/Card/index.js");
-/* harmony import */ var rmwc_Card__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(rmwc_Card__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var rmwc_GridList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rmwc/GridList */ "./node_modules/rmwc/GridList/index.js");
-/* harmony import */ var rmwc_GridList__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(rmwc_GridList__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rmwc/Dialog */ "./node_modules/rmwc/Dialog/index.js");
-/* harmony import */ var rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var rmwc_Ripple__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rmwc/Ripple */ "./node_modules/rmwc/Ripple/index.js");
-/* harmony import */ var rmwc_Ripple__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(rmwc_Ripple__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
+/* harmony import */ var rmwc_GridList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rmwc/GridList */ "./node_modules/rmwc/GridList/index.js");
+/* harmony import */ var rmwc_GridList__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(rmwc_GridList__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rmwc/Dialog */ "./node_modules/rmwc/Dialog/index.js");
+/* harmony import */ var rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var rmwc_Ripple__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rmwc/Ripple */ "./node_modules/rmwc/Ripple/index.js");
+/* harmony import */ var rmwc_Ripple__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(rmwc_Ripple__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
+/* harmony import */ var _components_atomic_card__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/atomic-card */ "./components/atomic-card.js");
 
-var _jsxFileName = "/Users/almog/Desktop/atomic-stats-fixed/pages/player.js";
+var _jsxFileName = "/Users/almog/Desktop/atomic-stats 3/pages/player.js";
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -93896,6 +94032,8 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -93927,6 +94065,24 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 var numberWithCommas = function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+var doughnutCallbacks = {
+  label: function label(tooltipItem, data) {
+    var dataset = data.datasets[tooltipItem.datasetIndex];
+
+    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+
+    var total = meta.total;
+    var currentValue = dataset.data[tooltipItem.index];
+    var percentage = parseFloat((currentValue / total * 100).toFixed(1)); // Add commas
+
+    currentValue = currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return currentValue + ' (' + percentage + '%)';
+  },
+  title: function title(tooltipItem, data) {
+    return data.labels[tooltipItem[0].index];
+  }
 };
 
 var Player =
@@ -94002,21 +94158,30 @@ function (_Component) {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: ['#00b0ff', '#76ff03', '#ff9100']
+          backgroundColor: []
         }]
       };
       var modes = {
-        'Solo': this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key],
-        'Duo': this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key],
-        'Squad': this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key] // Add to the data only the data that isn't 0
+        'Solo': {
+          value: this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key],
+          color: '#00b0ff'
+        },
+        'Duo': {
+          value: this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key],
+          color: '#76ff03'
+        },
+        'Squad': {
+          value: this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key],
+          color: '#ff9100'
+        } // Add to the data only the data that isn't 0
 
       };
 
       for (var mode in modes) {
-        if (modes[mode] != 0) {
-          console.log(data);
+        if (modes[mode].value != 0) {
           data.labels.push(mode);
-          data.datasets[0].data.push(modes[mode]);
+          data.datasets[0].data.push(modes[mode].value);
+          data.datasets[0].backgroundColor.push(modes[mode].color);
         }
       }
 
@@ -94031,21 +94196,30 @@ function (_Component) {
           data: [],
           borderColor: '#ffffff',
           borderWidth: 2,
-          backgroundColor: ['#00b0ff', '#76ff03', '#ff9100']
+          backgroundColor: []
         }]
       };
       var modes = {
-        'Solo': this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key],
-        'Duo': this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key],
-        'Squad': this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key] // Add to the data only the data that isn't 0
+        'Solo': {
+          value: this.props.stats.stats[this.state.seasonRange][this.state.platform].solo[key],
+          color: '#00b0ff'
+        },
+        'Duo': {
+          value: this.props.stats.stats[this.state.seasonRange][this.state.platform].duo[key],
+          color: '#76ff03'
+        },
+        'Squad': {
+          value: this.props.stats.stats[this.state.seasonRange][this.state.platform].squad[key],
+          color: '#ff9100'
+        } // Add to the data only the data that isn't 0
 
       };
 
       for (var mode in modes) {
-        if (modes[mode] != 0) {
-          console.log(data);
+        if (modes[mode].value != 0) {
           data.labels.push(mode);
-          data.datasets[0].data.push(modes[mode]);
+          data.datasets[0].data.push(modes[mode].value);
+          data.datasets[0].backgroundColor.push(modes[mode].color);
         }
       }
 
@@ -94057,15 +94231,15 @@ function (_Component) {
       var _this2 = this;
 
       if (this.props.stats === undefined) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_page_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_page__WEBPACK_IMPORTED_MODULE_3__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 142
+            lineNumber: 153
           }
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 143
+            lineNumber: 154
           }
         }, "Player not found!"));
       }
@@ -94096,7 +94270,7 @@ function (_Component) {
       var statChart;
 
       if (this.state.chartType === 'doughnut') {
-        statChart = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__["Doughnut"], {
+        statChart = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_10__["Doughnut"], {
           data: this.createDoughnutData(this.state.chartData),
           legend: {
             labels: {
@@ -94105,23 +94279,16 @@ function (_Component) {
           },
           options: {
             tooltips: {
-              callbacks: {
-                label: function label(tooltipItem, data) {
-                  var value = data.datasets[0].data[tooltipItem.index];
-                  value = value.toString();
-                  value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                  return value;
-                }
-              }
+              callbacks: doughnutCallbacks
             }
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 184
+            lineNumber: 195
           }
         });
       } else if (this.state.chartType === 'bar') {
-        statChart = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__["Bar"], {
+        statChart = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_10__["Bar"], {
           data: this.createBarData(this.state.chartData),
           legend: {
             display: false,
@@ -94151,24 +94318,23 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 186
+            lineNumber: 197
           }
         });
       }
 
       var kdChartMax = Math.ceil(Math.max(this.props.stats.stats[this.state.seasonRange][this.state.platform].solo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].duo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].squad['kd']) / 10) * 10;
-      var matches;
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_page_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_page__WEBPACK_IMPORTED_MODULE_3__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 194
+          lineNumber: 203
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 195
+          lineNumber: 204
         }
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["Dialog"], {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["Dialog"], {
         open: this.state.chartData !== undefined,
         onClose: function onClose(evt) {
           return _this2.setState({
@@ -94179,49 +94345,49 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 197
+          lineNumber: 206
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["DialogSurface"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["DialogSurface"], {
         style: {
           backgroundColor: "var(--mdc-theme-secondary)"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 201
+          lineNumber: 210
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["DialogHeader"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["DialogHeader"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 202
+          lineNumber: 211
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["DialogHeaderTitle"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["DialogHeaderTitle"], {
         style: {
           color: "white"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 203
+          lineNumber: 212
         }
-      }, this.state.chartTitle)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["DialogBody"], {
+      }, this.state.chartTitle)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["DialogBody"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 205
+          lineNumber: 214
         }
-      }, statChart), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["DialogFooter"], {
+      }, statChart), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["DialogFooter"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 208
+          lineNumber: 217
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["DialogFooterButton"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["DialogFooterButton"], {
         accept: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 209
+          lineNumber: 218
         }
-      }, "Close"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_9__["DialogBackdrop"], {
+      }, "Close"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Dialog__WEBPACK_IMPORTED_MODULE_8__["DialogBackdrop"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 212
+          lineNumber: 221
         }
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         style: {
@@ -94230,9 +94396,9 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 215
+          lineNumber: 224
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicCard, {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_atomic_card__WEBPACK_IMPORTED_MODULE_11__["default"], {
         className: "atomic-player-total-stats-card",
         title: this.props.stats.displayName,
         titleSize: "headline3",
@@ -94240,16 +94406,16 @@ function (_Component) {
         outlineColor: "var(--mdc-theme-primary)",
         backgroundColor: "var(--drawer-color)",
         width: "calc(100% - 8px)",
-        maxWidth: "970px",
+        maxWidth: "1150px",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 216
+          lineNumber: 225
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "atomic-section",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 217
+          lineNumber: 226
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Select__WEBPACK_IMPORTED_MODULE_5__["Select"], {
         className: "atomic-select atomic-season-range-select",
@@ -94272,7 +94438,7 @@ function (_Component) {
         }],
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 218
+          lineNumber: 227
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Select__WEBPACK_IMPORTED_MODULE_5__["Select"], {
         className: "atomic-select atomic-platform-select",
@@ -94290,7 +94456,7 @@ function (_Component) {
         options: platformSelect,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 237
+          lineNumber: 246
         }
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("hr", {
         className: "atomic-divider",
@@ -94300,22 +94466,22 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 247
+          lineNumber: 256
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "atomic-section",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 249
+          lineNumber: 258
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_8__["GridList"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_7__["GridList"], {
         tileAspect: "3x2",
         style: {
           display: "flex"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 250
+          lineNumber: 259
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicStatTile, {
         onClick: function onClick() {
@@ -94329,7 +94495,7 @@ function (_Component) {
         value: this.props.stats.stats[this.state.seasonRange][this.state.platform].total.score,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 251
+          lineNumber: 260
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicStatTile, {
         onClick: function onClick() {
@@ -94343,7 +94509,7 @@ function (_Component) {
         value: this.props.stats.stats[this.state.seasonRange][this.state.platform].total.matches,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 252
+          lineNumber: 261
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicStatTile, {
         onClick: function onClick() {
@@ -94357,7 +94523,21 @@ function (_Component) {
         value: this.props.stats.stats[this.state.seasonRange][this.state.platform].total.wins,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 253
+          lineNumber: 262
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicStatTile, {
+        onClick: function onClick() {
+          return _this2.setState({
+            chartData: 'kills',
+            chartType: 'doughnut',
+            chartTitle: "Kills"
+          });
+        },
+        title: "Kills",
+        value: this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kills,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 263
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicStatTile, {
         onClick: function onClick() {
@@ -94372,7 +94552,7 @@ function (_Component) {
         value: this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kd,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 254
+          lineNumber: 264
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicStatTile, {
         onClick: function onClick() {
@@ -94387,7 +94567,7 @@ function (_Component) {
         value: this.props.stats.stats[this.state.seasonRange][this.state.platform].total.winrate,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 255
+          lineNumber: 265
         }
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         style: {
@@ -94397,7 +94577,7 @@ function (_Component) {
         use: "caption",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 257
+          lineNumber: 267
         }
       }, "Tip: Click on the stat for detailed chart!"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "atomic-player-stats",
@@ -94408,9 +94588,10 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 261
+          lineNumber: 271
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicModeStatsCard, {
+        tops: ['10', '25'],
         keys: {
           score: "Score",
           wins: "Wins",
@@ -94427,9 +94608,10 @@ function (_Component) {
         color: "#00b0ff",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 262
+          lineNumber: 272
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicModeStatsCard, {
+        tops: ['5', '12'],
         keys: {
           score: "Score",
           wins: "Wins",
@@ -94446,9 +94628,10 @@ function (_Component) {
         color: "#76ff03",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 263
+          lineNumber: 273
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicModeStatsCard, {
+        tops: ['3', '6'],
         keys: {
           score: "Score",
           wins: "Wins",
@@ -94465,7 +94648,7 @@ function (_Component) {
         color: "#ff9100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 264
+          lineNumber: 274
         }
       }))));
     }
@@ -94488,11 +94671,52 @@ function (_Component2) {
   }
 
   _createClass(AtomicModeStatsCard, [{
+    key: "createData",
+    value: function createData() {
+      var _keys;
+
+      var data = {
+        labels: [],
+        datasets: [{
+          data: [],
+          backgroundColor: []
+        }]
+      };
+      var top1 = 'Top ' + this.props.tops[0];
+      var top2 = 'Top ' + this.props.tops[1];
+      var keys = (_keys = {
+        'Defeats': {
+          value: this.props.stats.matches - this.props.stats.wins - (this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins) - (this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins),
+          color: '#f44336'
+        },
+        'Wins': {
+          value: this.props.stats.wins,
+          color: "#2196f3"
+        }
+      }, _defineProperty(_keys, top1, {
+        value: this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins,
+        color: "#4caf50"
+      }), _defineProperty(_keys, top2, {
+        value: this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]],
+        color: "#ff9800"
+      }), _keys); // Add to the data only the data that isn't 0
+
+      for (var key in keys) {
+        if (keys[key].value != 0) {
+          data.labels.push(key);
+          data.datasets[0].data.push(keys[key].value);
+          data.datasets[0].backgroundColor.push(keys[key].color);
+        }
+      }
+
+      return data;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicCard, {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_atomic_card__WEBPACK_IMPORTED_MODULE_11__["default"], {
         className: this.props.className ? this.props.className : "" + ' ' + "atomic-mode-stats-card",
         title: this.props.title,
         subtitle: numberWithCommas(this.props.stats.matches) + " Matches",
@@ -94504,12 +94728,45 @@ function (_Component2) {
         maxWidth: "970px",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 275
+          lineNumber: 318
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_8__["GridList"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_10__["Doughnut"], {
+        style: {
+          paddingBottom: "10px"
+        },
+        data: this.createData(),
+        legend: {
+          labels: {
+            fontColor: "#ffffff"
+          }
+        },
+        options: {
+          layout: {
+            padding: {
+              bottom: 10
+            }
+          },
+          tooltips: {
+            callbacks: doughnutCallbacks
+          }
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 276
+          lineNumber: 319
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("hr", {
+        className: "atomic-stat-divider",
+        style: {
+          borderColor: this.props.color
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 320
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_7__["GridList"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 321
         }
       }, Object.entries(this.props.keys).map(function (_ref2, i) {
         var _ref3 = _slicedToArray(_ref2, 2),
@@ -94524,7 +94781,7 @@ function (_Component2) {
           value: _this3.props.stats[key],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 278
+            lineNumber: 323
           }
         });
       })));
@@ -94555,7 +94812,7 @@ function (_Component3) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 290
+          lineNumber: 335
         }
       });
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -94563,13 +94820,13 @@ function (_Component3) {
         style: _objectSpread({}, this.props.style),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 293
+          lineNumber: 338
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Ripple__WEBPACK_IMPORTED_MODULE_10__["Ripple"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Ripple__WEBPACK_IMPORTED_MODULE_9__["Ripple"], {
         onClick: this.props.onClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 294
+          lineNumber: 339
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         style: {
@@ -94581,7 +94838,7 @@ function (_Component3) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 295
+          lineNumber: 340
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         use: "body1",
@@ -94591,7 +94848,7 @@ function (_Component3) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 296
+          lineNumber: 341
         }
       }, this.props.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         use: "body2",
@@ -94601,7 +94858,7 @@ function (_Component3) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 297
+          lineNumber: 342
         }
       }, numberWithCommas(this.props.value)))), divider);
     }
@@ -94624,28 +94881,28 @@ function (_Component4) {
   _createClass(AtomicStatTile, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Ripple__WEBPACK_IMPORTED_MODULE_10__["Ripple"], {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Ripple__WEBPACK_IMPORTED_MODULE_9__["Ripple"], {
         onClick: this.props.onClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 309
+          lineNumber: 354
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_8__["GridTile"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_7__["GridTile"], {
         style: {
           width: "180px"
         },
         className: this.props.className ? this.props.className : "" + ' ' + "atomic-stat-tile",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 310
+          lineNumber: 355
         }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_8__["GridTilePrimary"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_7__["GridTilePrimary"], {
         style: {
           backgroundColor: "var(--mdc-theme-secondary)"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 311
+          lineNumber: 356
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         style: {
@@ -94656,7 +94913,7 @@ function (_Component4) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 312
+          lineNumber: 357
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         use: "headline4",
@@ -94665,9 +94922,9 @@ function (_Component4) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 313
+          lineNumber: 358
         }
-      }, numberWithCommas(this.props.value)))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_8__["GridTileSecondary"], {
+      }, numberWithCommas(this.props.value)))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_GridList__WEBPACK_IMPORTED_MODULE_7__["GridTileSecondary"], {
         style: {
           display: "flex",
           alignItems: "center",
@@ -94678,7 +94935,7 @@ function (_Component4) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 316
+          lineNumber: 361
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         use: "headline5",
@@ -94687,110 +94944,13 @@ function (_Component4) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 317
+          lineNumber: 362
         }
       }, this.props.title))));
     }
   }]);
 
   return AtomicStatTile;
-}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
-
-var AtomicCard =
-/*#__PURE__*/
-function (_Component5) {
-  _inherits(AtomicCard, _Component5);
-
-  function AtomicCard() {
-    _classCallCheck(this, AtomicCard);
-
-    return _possibleConstructorReturn(this, (AtomicCard.__proto__ || Object.getPrototypeOf(AtomicCard)).apply(this, arguments));
-  }
-
-  _createClass(AtomicCard, [{
-    key: "render",
-    value: function render() {
-      var _ref4;
-
-      var polygon = "polygon(20px 0%, 100% 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 100%, 0% 20px)";
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: this.props.className ? this.props.className : "" + ' ' + "atomic-card",
-        style: this.props.style,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 330
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Card__WEBPACK_IMPORTED_MODULE_7__["Card"], {
-        style: {
-          maxWidth: this.props.maxWidth,
-          width: this.props.width,
-          backgroundColor: this.props.outlineColor,
-          clipPath: polygon,
-          WebkitClipPath: polygon,
-          margin: "auto"
-        },
-        className: "atomic-outer-card",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 331
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Card__WEBPACK_IMPORTED_MODULE_7__["Card"], {
-        style: {
-          maxWidth: this.props.maxWidth,
-          clipPath: polygon,
-          WebkitClipPath: polygon,
-          backgroundColor: this.props.backgroundColor,
-          margin: "4px 4px"
-        },
-        className: "atomic-inner-card",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 332
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "atomic-card-title",
-        style: (_ref4 = {
-          display: "flex",
-          justifyContent: "space-between",
-          paddingTop: "8px"
-        }, _defineProperty(_ref4, "display", "flex"), _defineProperty(_ref4, "alignItems", "center"), _defineProperty(_ref4, "paddingLeft", "20px"), _defineProperty(_ref4, "width", "100%"), _defineProperty(_ref4, "height", "60px"), _defineProperty(_ref4, "backgroundColor", "var(--mdc-theme-secondary)"), _ref4),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 333
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
-        use: this.props.titleSize,
-        style: {
-          color: this.props.titleColor
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 334
-        }
-      }, this.props.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
-        use: "headline5",
-        style: {
-          marginRight: "35px",
-          color: "white"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 335
-        }
-      }, this.props.subtitle)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "atomic-card-content",
-        style: {
-          padding: "10px 10px"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 337
-        }
-      }, this.props.children))));
-    }
-  }]);
-
-  return AtomicCard;
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
     (function (Component, route) {
       if(!Component) return
@@ -94831,7 +94991,7 @@ router.add({
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /*!*******************************!*\
   !*** multi ./pages/player.js ***!
   \*******************************/
@@ -94843,7 +95003,7 @@ module.exports = __webpack_require__(/*! ./pages/player.js */"./pages/player.js"
 
 /***/ })
 
-},[[6,"static/runtime/webpack.js","styles"]]])
+},[[3,"static/runtime/webpack.js","styles"]]])
             return { page: comp.default }
           })
         ;
