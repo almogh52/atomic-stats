@@ -16,15 +16,15 @@
     "chart.js": "^2.7.2",
     "express": "^4.16.3",
     "hoek": "^5.0.3",
-    "next": "^6.1.1-canary.3",
+    "next": "^6.1.1-canary.4",
     "nextjs-dynamic-routes": "^2.1.8",
     "node-fetch": "^2.2.0",
-    "react": "^16.4.1",
+    "react": "^16.4.2",
     "react-chartjs-2": "^2.7.4",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "rmwc": "^1.8.3"
   },
   "devDependencies": {
-    "node-sass": "^4.9.1"
+    "node-sass": "^4.9.2"
   }
 }

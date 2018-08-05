@@ -201,8 +201,6 @@ export default class Player extends Component {
 
     return (
       <Page>
-        <br />
-
         <Dialog
           open={ this.state.chartData !== undefined }
           onClose={evt => this.setState({ chartData: undefined, chartType: undefined, chartTitle: undefined })}

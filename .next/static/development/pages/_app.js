@@ -4870,9 +4870,15 @@ var SingletonRouter = {
 }; // Create public properties and methods of the router in the SingletonRouter
 
 var urlPropertyFields = ['pathname', 'route', 'query', 'asPath'];
-var propertyFields = ['components', 'events'];
+var propertyFields = ['components'];
 var routerEvents = ['routeChangeStart', 'beforeHistoryChange', 'routeChangeComplete', 'routeChangeError', 'hashChangeStart', 'hashChangeComplete'];
-var coreMethodFields = ['push', 'replace', 'reload', 'back', 'prefetch', 'beforePopState'];
+var coreMethodFields = ['push', 'replace', 'reload', 'back', 'prefetch', 'beforePopState']; // Events is a static property on the router, the router doesn't have to be initialized to use it
+
+Object.defineProperty(SingletonRouter, 'events', {
+  get: function get() {
+    return _router.default.events;
+  }
+});
 propertyFields.concat(urlPropertyFields).forEach(function (field) {
   // Here we need to use Object.defineProperty because, we need to return
   // the property assigned to the actual router
@@ -4895,7 +4901,7 @@ coreMethodFields.forEach(function (field) {
 });
 routerEvents.forEach(function (event) {
   SingletonRouter.ready(function () {
-    SingletonRouter.router.events.on(event, function () {
+    _router.default.events.on(event, function () {
       var eventField = "on".concat(event.charAt(0).toUpperCase()).concat(event.substring(1));
 
       if (SingletonRouter[eventField]) {
@@ -5002,8 +5008,10 @@ function makePublicRouterInstance(router) {
     }
 
     instance[property] = router[property];
-  }
+  } // Events is a static property on the router, the router doesn't have to be initialized to use it
 
+
+  instance.events = _router.default.events;
   propertyFields.forEach(function (field) {
     // Here we need to use Object.defineProperty because, we need to return
     // the property assigned to the actual router
@@ -5107,10 +5115,11 @@ function () {
     }
 
     this.components['/_app'] = {
-      Component: App // Handling Router Events
+      Component: App // Backwards compat for Router.router.events
+      // TODO: Should be remove the following major version as it was never documented
 
     };
-    this.events = new _EventEmitter.default();
+    this.events = Router.events;
     this.pageLoader = pageLoader;
     this.prefetchQueue = new _pQueue.default({
       concurrency: 2
@@ -5221,7 +5230,7 @@ function () {
                 url = window.location.href; // This makes sure we only use pathname + query + hash, to mirror `asPath` coming from the server.
 
                 as = window.location.pathname + window.location.search + window.location.hash;
-                this.events.emit('routeChangeStart', url);
+                Router.events.emit('routeChangeStart', url);
                 _context.next = 10;
                 return this.getRouteInfo(route, pathname, query, as);
 
@@ -5244,11 +5253,11 @@ function () {
                   break;
                 }
 
-                this.events.emit('routeChangeError', error, url);
+                Router.events.emit('routeChangeError', error, url);
                 throw error;
 
               case 18:
-                this.events.emit('routeChangeComplete', url);
+                Router.events.emit('routeChangeComplete', url);
 
               case 19:
               case "end":
@@ -5311,10 +5320,10 @@ function () {
                   break;
                 }
 
-                this.events.emit('hashChangeStart', as);
+                Router.events.emit('hashChangeStart', as);
                 this.changeState(method, url, as);
                 this.scrollToHash(as);
-                this.events.emit('hashChangeComplete', as);
+                Router.events.emit('hashChangeComplete', as);
                 return _context2.abrupt("return", true);
 
               case 10:
@@ -5330,7 +5339,7 @@ function () {
                 route = toRoute(pathname);
                 _options$shallow = options.shallow, shallow = _options$shallow === void 0 ? false : _options$shallow;
                 routeInfo = null;
-                this.events.emit('routeChangeStart', as); // If shallow === false and other conditions met, we reuse the
+                Router.events.emit('routeChangeStart', as); // If shallow === false and other conditions met, we reuse the
                 // existing routeInfo for this route.
                 // Because of this, getInitialProps would not run.
 
@@ -5361,7 +5370,7 @@ function () {
                 return _context2.abrupt("return", false);
 
               case 26:
-                this.events.emit('beforeHistoryChange', as);
+                Router.events.emit('beforeHistoryChange', as);
                 this.changeState(method, url, as, options);
                 hash = window.location.hash.substring(1);
                 this.set(route, pathname, query, as, (0, _objectSpread2.default)({}, routeInfo, {
@@ -5373,11 +5382,11 @@ function () {
                   break;
                 }
 
-                this.events.emit('routeChangeError', error, as);
+                Router.events.emit('routeChangeError', error, as);
                 throw error;
 
               case 33:
-                this.events.emit('routeChangeComplete', as);
+                Router.events.emit('routeChangeComplete', as);
                 return _context2.abrupt("return", true);
 
               case 35:
@@ -5796,7 +5805,7 @@ function () {
     key: "abortComponentLoad",
     value: function abortComponentLoad(as) {
       if (this.componentLoadCancel) {
-        this.events.emit('routeChangeError', new Error('Route Cancelled'), as);
+        Router.events.emit('routeChangeError', new Error('Route Cancelled'), as);
         this.componentLoadCancel();
         this.componentLoadCancel = null;
       }
@@ -5826,6 +5835,12 @@ function () {
 }();
 
 exports.default = Router;
+Object.defineProperty(Router, "events", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: new _EventEmitter.default()
+});
 
 function toRoute(path) {
   return path.replace(/\/$/, '') || '/';
@@ -7858,7 +7873,7 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.4.1
+/** @license React v16.4.2
  * react.development.js
  *
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -7884,7 +7899,7 @@ var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ "./nod
 
 // TODO: this is special because it gets imported during build.
 
-var ReactVersion = '16.4.1';
+var ReactVersion = '16.4.2';
 
 // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.

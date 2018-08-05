@@ -253,12 +253,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rmwc_List__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(rmwc_List__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var rmwc_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rmwc/Button */ "rmwc/Button");
 /* harmony import */ var rmwc_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/page.scss */ "./styles/page.scss");
-/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_styles_page_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes */ "./routes.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! material-components-web/dist/material-components-web.min.css */ "./node_modules/material-components-web/dist/material-components-web.min.css");
-/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var rmwc_Elevation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rmwc/Elevation */ "rmwc/Elevation");
+/* harmony import */ var rmwc_Elevation__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rmwc_Elevation__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/page.scss */ "./styles/page.scss");
+/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_page_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes */ "./routes.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! material-components-web/dist/material-components-web.min.css */ "./node_modules/material-components-web/dist/material-components-web.min.css");
+/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../node_modules/rmwc */ "./node_modules/rmwc/index.js");
+/* harmony import */ var _node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__);
 var _jsxFileName = "/Users/almog/Desktop/atomic-stats 3/components/page.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -274,6 +278,8 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
 
 
 
@@ -343,7 +349,7 @@ function (_Component) {
         return;
       }
 
-      _routes__WEBPACK_IMPORTED_MODULE_7___default.a.pushRoute('player', {
+      _routes__WEBPACK_IMPORTED_MODULE_8___default.a.pushRoute('player', {
         username: playerName
       });
     }
@@ -356,12 +362,12 @@ function (_Component) {
         className: "App",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 83
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 84
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBar"], {
         theme: "primary",
@@ -369,18 +375,18 @@ function (_Component) {
         className: "atomic-app-bar",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
+          lineNumber: 85
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarRow"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83
+          lineNumber: 86
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarSection"], {
         alignStart: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84
+          lineNumber: 87
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarNavigationIcon"], {
         theme: "primary",
@@ -388,79 +394,113 @@ function (_Component) {
         onClick: this.menuBtnPressed,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85
+          lineNumber: 88
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarTitle"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86
+          lineNumber: 89
         }
       }, "Atomic Stats"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 94
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["Drawer"], {
         persistent: true,
         className: "atomic-drawer",
         open: this.state.persistentOpen,
+        style: {
+          zIndex: "1"
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 95
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mdc-drawer__toolbar-spacer",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["DrawerToolbarSpacer"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 96
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["DrawerContent"], {
         className: "atomic-drawer-content",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94
+          lineNumber: 97
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 95
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 96
-        }
-      }, "Friends")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 98
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 99
         }
-      }, "My Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 101
+          lineNumber: 100
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+      }, "Friends")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 102
         }
-      }, "My Profile"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarFixedAdjust"], {
-        className: "atomic-content-wrapper",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 103
+        }
+      }, "My Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 105
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 106
+        }
+      }, "My Profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListDivider"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 109
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 110
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        onClick: function onClick() {
+          return _routes__WEBPACK_IMPORTED_MODULE_8___default.a.pushRoute('news');
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 111
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112
+        }
+      }, "News")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarFixedAdjust"], {
+        className: "atomic-content-wrapper",
+        style: {
+          display: "flex",
+          flexDirection: "column"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 118
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "atomic-search-wrapper",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 119
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TextField__WEBPACK_IMPORTED_MODULE_2__["TextField"], {
         box: true,
@@ -474,7 +514,7 @@ function (_Component) {
         label: "Epic Games Username",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109
+          lineNumber: 120
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
         raised: true,
@@ -484,20 +524,70 @@ function (_Component) {
         onClick: this.searchPlayer,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110
+          lineNumber: 121
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["ButtonIcon"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111
+          lineNumber: 122
         }
       }, "search"), "Search")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "atomic-content",
+        style: {
+          overflow: "hidden"
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 126
         }
-      }, this.props.children)));
+      }, this.props.children), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          flexGrow: "1",
+          display: "flex",
+          alignItems: "flex-end"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 129
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "atomic-footer",
+        style: {
+          width: "100%",
+          marginTop: "50px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          backgroundColor: "var(--drawer-color)",
+          height: "50px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 130
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
+        use: "body2",
+        style: {
+          flexDirection: "row",
+          color: "var(--mdc-theme-primary)",
+          fontSize: "19px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 131
+        }
+      }, "\xA9 2018 Atomic Stats"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
+        use: "caption",
+        style: {
+          flexDirection: "row",
+          color: "var(--mdc-theme-primary)"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 132
+        }
+      }, "This site is not affiliated with Epic Games.")))));
     }
   }]);
 
@@ -7367,6 +7457,15 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 34
         }
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        style: {
+          paddingLeft: "10px",
+          paddingRight: "10px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_atomic_card__WEBPACK_IMPORTED_MODULE_4__["default"], {
         className: "atomic-news",
         title: "News",
@@ -7378,12 +7477,12 @@ function (_Component) {
         maxWidth: "1100px",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 36
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_5__["List"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 37
         }
       }, this.props.news.map(function (message, i) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicNewsTile, {
@@ -7393,10 +7492,10 @@ function (_Component) {
           description: message.description,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 38
+            lineNumber: 39
           }
         });
-      }))));
+      })))));
     }
   }], [{
     key: "getInitialProps",
@@ -7462,26 +7561,28 @@ function (_Component2) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: this.props.className ? this.props.className : "" + ' ' + "atomic-news-tile",
         style: {
-          paddingTop: "25px"
+          paddingTop: "25px",
+          overflow: "hidden"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 52
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         style: {
           display: "inline-block",
-          verticalAlign: "top"
+          verticalAlign: "top",
+          maxHeight: "210px"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 53
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         src: this.props.image,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 54
         }
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         style: {
@@ -7490,7 +7591,7 @@ function (_Component2) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 56
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         style: {
@@ -7499,12 +7600,12 @@ function (_Component2) {
         use: "headline3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 57
         }
       }, this.props.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 58
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         style: {
@@ -7515,7 +7616,7 @@ function (_Component2) {
         use: "headline4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 59
         }
       }, this.props.description)));
     }
@@ -7539,6 +7640,14 @@ var router = module.exports = new Router();
 router.add({
   name: 'player',
   pattern: '/player/:username/:platform(pc|ps4|xb1)?'
+});
+router.add({
+  name: 'news',
+  pattern: '/news'
+});
+router.add({
+  name: 'shop',
+  pattern: '/shop'
 });
 
 /***/ }),
@@ -7882,6 +7991,17 @@ module.exports = require("rmwc/Card");
 /***/ (function(module, exports) {
 
 module.exports = require("rmwc/Drawer");
+
+/***/ }),
+
+/***/ "rmwc/Elevation":
+/*!*********************************!*\
+  !*** external "rmwc/Elevation" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("rmwc/Elevation");
 
 /***/ }),
 

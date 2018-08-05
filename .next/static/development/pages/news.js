@@ -163,12 +163,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rmwc_List__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(rmwc_List__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var rmwc_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rmwc/Button */ "./node_modules/rmwc/Button/index.js");
 /* harmony import */ var rmwc_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/page.scss */ "./styles/page.scss");
-/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_styles_page_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes */ "./routes.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! material-components-web/dist/material-components-web.min.css */ "./node_modules/material-components-web/dist/material-components-web.min.css");
-/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var rmwc_Elevation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rmwc/Elevation */ "./node_modules/rmwc/Elevation/index.js");
+/* harmony import */ var rmwc_Elevation__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rmwc_Elevation__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/page.scss */ "./styles/page.scss");
+/* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_page_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes */ "./routes.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! material-components-web/dist/material-components-web.min.css */ "./node_modules/material-components-web/dist/material-components-web.min.css");
+/* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../node_modules/rmwc */ "./node_modules/rmwc/index.js");
+/* harmony import */ var _node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__);
 var _jsxFileName = "/Users/almog/Desktop/atomic-stats 3/components/page.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -184,6 +188,8 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
 
 
 
@@ -253,7 +259,7 @@ function (_Component) {
         return;
       }
 
-      _routes__WEBPACK_IMPORTED_MODULE_7___default.a.pushRoute('player', {
+      _routes__WEBPACK_IMPORTED_MODULE_8___default.a.pushRoute('player', {
         username: playerName
       });
     }
@@ -266,12 +272,12 @@ function (_Component) {
         className: "App",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 83
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 84
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBar"], {
         theme: "primary",
@@ -279,18 +285,18 @@ function (_Component) {
         className: "atomic-app-bar",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
+          lineNumber: 85
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarRow"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83
+          lineNumber: 86
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarSection"], {
         alignStart: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84
+          lineNumber: 87
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarNavigationIcon"], {
         theme: "primary",
@@ -298,79 +304,113 @@ function (_Component) {
         onClick: this.menuBtnPressed,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85
+          lineNumber: 88
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarTitle"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86
+          lineNumber: 89
         }
       }, "Atomic Stats"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 94
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["Drawer"], {
         persistent: true,
         className: "atomic-drawer",
         open: this.state.persistentOpen,
+        style: {
+          zIndex: "1"
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 95
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mdc-drawer__toolbar-spacer",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["DrawerToolbarSpacer"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 96
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["DrawerContent"], {
         className: "atomic-drawer-content",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94
+          lineNumber: 97
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 95
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 96
-        }
-      }, "Friends")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 98
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 99
         }
-      }, "My Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 101
+          lineNumber: 100
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+      }, "Friends")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 102
         }
-      }, "My Profile"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarFixedAdjust"], {
-        className: "atomic-content-wrapper",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 103
+        }
+      }, "My Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 105
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 106
+        }
+      }, "My Profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListDivider"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 109
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 110
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        onClick: function onClick() {
+          return _routes__WEBPACK_IMPORTED_MODULE_8___default.a.pushRoute('news');
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 111
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112
+        }
+      }, "News")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarFixedAdjust"], {
+        className: "atomic-content-wrapper",
+        style: {
+          display: "flex",
+          flexDirection: "column"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 118
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "atomic-search-wrapper",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 119
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TextField__WEBPACK_IMPORTED_MODULE_2__["TextField"], {
         box: true,
@@ -384,7 +424,7 @@ function (_Component) {
         label: "Epic Games Username",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109
+          lineNumber: 120
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
         raised: true,
@@ -394,20 +434,70 @@ function (_Component) {
         onClick: this.searchPlayer,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110
+          lineNumber: 121
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["ButtonIcon"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111
+          lineNumber: 122
         }
       }, "search"), "Search")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "atomic-content",
+        style: {
+          overflow: "hidden"
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 126
         }
-      }, this.props.children)));
+      }, this.props.children), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          flexGrow: "1",
+          display: "flex",
+          alignItems: "flex-end"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 129
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "atomic-footer",
+        style: {
+          width: "100%",
+          marginTop: "50px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          backgroundColor: "var(--drawer-color)",
+          height: "50px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 130
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
+        use: "body2",
+        style: {
+          flexDirection: "row",
+          color: "var(--mdc-theme-primary)",
+          fontSize: "19px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 131
+        }
+      }, "\xA9 2018 Atomic Stats"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
+        use: "caption",
+        style: {
+          flexDirection: "row",
+          color: "var(--mdc-theme-primary)"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 132
+        }
+      }, "This site is not affiliated with Epic Games.")))));
     }
   }]);
 
@@ -51737,9 +51827,15 @@ var SingletonRouter = {
 }; // Create public properties and methods of the router in the SingletonRouter
 
 var urlPropertyFields = ['pathname', 'route', 'query', 'asPath'];
-var propertyFields = ['components', 'events'];
+var propertyFields = ['components'];
 var routerEvents = ['routeChangeStart', 'beforeHistoryChange', 'routeChangeComplete', 'routeChangeError', 'hashChangeStart', 'hashChangeComplete'];
-var coreMethodFields = ['push', 'replace', 'reload', 'back', 'prefetch', 'beforePopState'];
+var coreMethodFields = ['push', 'replace', 'reload', 'back', 'prefetch', 'beforePopState']; // Events is a static property on the router, the router doesn't have to be initialized to use it
+
+Object.defineProperty(SingletonRouter, 'events', {
+  get: function get() {
+    return _router.default.events;
+  }
+});
 propertyFields.concat(urlPropertyFields).forEach(function (field) {
   // Here we need to use Object.defineProperty because, we need to return
   // the property assigned to the actual router
@@ -51762,7 +51858,7 @@ coreMethodFields.forEach(function (field) {
 });
 routerEvents.forEach(function (event) {
   SingletonRouter.ready(function () {
-    SingletonRouter.router.events.on(event, function () {
+    _router.default.events.on(event, function () {
       var eventField = "on".concat(event.charAt(0).toUpperCase()).concat(event.substring(1));
 
       if (SingletonRouter[eventField]) {
@@ -51869,8 +51965,10 @@ function makePublicRouterInstance(router) {
     }
 
     instance[property] = router[property];
-  }
+  } // Events is a static property on the router, the router doesn't have to be initialized to use it
 
+
+  instance.events = _router.default.events;
   propertyFields.forEach(function (field) {
     // Here we need to use Object.defineProperty because, we need to return
     // the property assigned to the actual router
@@ -51974,10 +52072,11 @@ function () {
     }
 
     this.components['/_app'] = {
-      Component: App // Handling Router Events
+      Component: App // Backwards compat for Router.router.events
+      // TODO: Should be remove the following major version as it was never documented
 
     };
-    this.events = new _EventEmitter.default();
+    this.events = Router.events;
     this.pageLoader = pageLoader;
     this.prefetchQueue = new _pQueue.default({
       concurrency: 2
@@ -52088,7 +52187,7 @@ function () {
                 url = window.location.href; // This makes sure we only use pathname + query + hash, to mirror `asPath` coming from the server.
 
                 as = window.location.pathname + window.location.search + window.location.hash;
-                this.events.emit('routeChangeStart', url);
+                Router.events.emit('routeChangeStart', url);
                 _context.next = 10;
                 return this.getRouteInfo(route, pathname, query, as);
 
@@ -52111,11 +52210,11 @@ function () {
                   break;
                 }
 
-                this.events.emit('routeChangeError', error, url);
+                Router.events.emit('routeChangeError', error, url);
                 throw error;
 
               case 18:
-                this.events.emit('routeChangeComplete', url);
+                Router.events.emit('routeChangeComplete', url);
 
               case 19:
               case "end":
@@ -52178,10 +52277,10 @@ function () {
                   break;
                 }
 
-                this.events.emit('hashChangeStart', as);
+                Router.events.emit('hashChangeStart', as);
                 this.changeState(method, url, as);
                 this.scrollToHash(as);
-                this.events.emit('hashChangeComplete', as);
+                Router.events.emit('hashChangeComplete', as);
                 return _context2.abrupt("return", true);
 
               case 10:
@@ -52197,7 +52296,7 @@ function () {
                 route = toRoute(pathname);
                 _options$shallow = options.shallow, shallow = _options$shallow === void 0 ? false : _options$shallow;
                 routeInfo = null;
-                this.events.emit('routeChangeStart', as); // If shallow === false and other conditions met, we reuse the
+                Router.events.emit('routeChangeStart', as); // If shallow === false and other conditions met, we reuse the
                 // existing routeInfo for this route.
                 // Because of this, getInitialProps would not run.
 
@@ -52228,7 +52327,7 @@ function () {
                 return _context2.abrupt("return", false);
 
               case 26:
-                this.events.emit('beforeHistoryChange', as);
+                Router.events.emit('beforeHistoryChange', as);
                 this.changeState(method, url, as, options);
                 hash = window.location.hash.substring(1);
                 this.set(route, pathname, query, as, (0, _objectSpread2.default)({}, routeInfo, {
@@ -52240,11 +52339,11 @@ function () {
                   break;
                 }
 
-                this.events.emit('routeChangeError', error, as);
+                Router.events.emit('routeChangeError', error, as);
                 throw error;
 
               case 33:
-                this.events.emit('routeChangeComplete', as);
+                Router.events.emit('routeChangeComplete', as);
                 return _context2.abrupt("return", true);
 
               case 35:
@@ -52663,7 +52762,7 @@ function () {
     key: "abortComponentLoad",
     value: function abortComponentLoad(as) {
       if (this.componentLoadCancel) {
-        this.events.emit('routeChangeError', new Error('Route Cancelled'), as);
+        Router.events.emit('routeChangeError', new Error('Route Cancelled'), as);
         this.componentLoadCancel();
         this.componentLoadCancel = null;
       }
@@ -52693,6 +52792,12 @@ function () {
 }();
 
 exports.default = Router;
+Object.defineProperty(Router, "events", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: new _EventEmitter.default()
+});
 
 function toRoute(path) {
   return path.replace(/\/$/, '') || '/';
@@ -56246,7 +56351,7 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.4.1
+/** @license React v16.4.2
  * react-dom.development.js
  *
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -58817,14 +58922,15 @@ var ATTRIBUTE_NAME_CHAR = ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u
 var ROOT_ATTRIBUTE_NAME = 'data-reactroot';
 var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + ATTRIBUTE_NAME_START_CHAR + '][' + ATTRIBUTE_NAME_CHAR + ']*$');
 
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 var illegalAttributeNameCache = {};
 var validatedAttributeNameCache = {};
 
 function isAttributeNameSafe(attributeName) {
-  if (validatedAttributeNameCache.hasOwnProperty(attributeName)) {
+  if (hasOwnProperty.call(validatedAttributeNameCache, attributeName)) {
     return true;
   }
-  if (illegalAttributeNameCache.hasOwnProperty(attributeName)) {
+  if (hasOwnProperty.call(illegalAttributeNameCache, attributeName)) {
     return false;
   }
   if (VALID_ATTRIBUTE_NAME_REGEX.test(attributeName)) {
@@ -63150,7 +63256,7 @@ var warnedProperties = {};
 var rARIA = new RegExp('^(aria)-[' + ATTRIBUTE_NAME_CHAR + ']*$');
 var rARIACamel = new RegExp('^(aria)[A-Z][' + ATTRIBUTE_NAME_CHAR + ']*$');
 
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
 function getStackAddendum() {
   var stack = ReactDebugCurrentFrame.getStackAddendum();
@@ -63158,7 +63264,7 @@ function getStackAddendum() {
 }
 
 function validateProperty(tagName, name) {
-  if (hasOwnProperty.call(warnedProperties, name) && warnedProperties[name]) {
+  if (hasOwnProperty$1.call(warnedProperties, name) && warnedProperties[name]) {
     return true;
   }
 
@@ -73172,7 +73278,7 @@ implementation) {
 
 // TODO: this is special because it gets imported during build.
 
-var ReactVersion = '16.4.1';
+var ReactVersion = '16.4.2';
 
 // TODO: This type is shared between the reconciler and ReactDOM, but will
 // eventually be lifted out to the renderer.
@@ -73733,7 +73839,7 @@ if (false) {} else {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.4.1
+/** @license React v16.4.2
  * react.development.js
  *
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -73759,7 +73865,7 @@ var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ "./nod
 
 // TODO: this is special because it gets imported during build.
 
-var ReactVersion = '16.4.1';
+var ReactVersion = '16.4.2';
 
 // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.
@@ -84705,6 +84811,15 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 34
         }
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        style: {
+          paddingLeft: "10px",
+          paddingRight: "10px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_atomic_card__WEBPACK_IMPORTED_MODULE_4__["default"], {
         className: "atomic-news",
         title: "News",
@@ -84716,12 +84831,12 @@ function (_Component) {
         maxWidth: "1100px",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 36
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_5__["List"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 37
         }
       }, this.props.news.map(function (message, i) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AtomicNewsTile, {
@@ -84731,10 +84846,10 @@ function (_Component) {
           description: message.description,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 38
+            lineNumber: 39
           }
         });
-      }))));
+      })))));
     }
   }], [{
     key: "getInitialProps",
@@ -84800,26 +84915,28 @@ function (_Component2) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: this.props.className ? this.props.className : "" + ' ' + "atomic-news-tile",
         style: {
-          paddingTop: "25px"
+          paddingTop: "25px",
+          overflow: "hidden"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 52
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         style: {
           display: "inline-block",
-          verticalAlign: "top"
+          verticalAlign: "top",
+          maxHeight: "210px"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 53
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         src: this.props.image,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 54
         }
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         style: {
@@ -84828,7 +84945,7 @@ function (_Component2) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 56
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         style: {
@@ -84837,12 +84954,12 @@ function (_Component2) {
         use: "headline3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 57
         }
       }, this.props.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 58
         }
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_node_modules_rmwc__WEBPACK_IMPORTED_MODULE_6__["Typography"], {
         style: {
@@ -84853,7 +84970,7 @@ function (_Component2) {
         use: "headline4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 59
         }
       }, this.props.description)));
     }
@@ -84897,10 +85014,18 @@ router.add({
   name: 'player',
   pattern: '/player/:username/:platform(pc|ps4|xb1)?'
 });
+router.add({
+  name: 'news',
+  pattern: '/news'
+});
+router.add({
+  name: 'shop',
+  pattern: '/shop'
+});
 
 /***/ }),
 
-/***/ 7:
+/***/ 6:
 /*!*****************************!*\
   !*** multi ./pages/news.js ***!
   \*****************************/
@@ -84912,7 +85037,7 @@ module.exports = __webpack_require__(/*! ./pages/news.js */"./pages/news.js");
 
 /***/ })
 
-},[[7,"static/runtime/webpack.js","styles"]]])
+},[[6,"static/runtime/webpack.js","styles"]]])
             return { page: comp.default }
           })
         ;

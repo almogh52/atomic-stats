@@ -32,13 +32,15 @@ export default class News extends Component {
     render() {
         return (
             <Page>
-                <AtomicCard className="atomic-news" title="News" titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1100px">
-                    <List>
-                        {
-                            this.props.news.map((message, i) => <AtomicNewsTile key={i} image={ message.image } title={ message.title } description={ message.description }/>)
-                        }
-                    </List>
-                </AtomicCard>
+                <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
+                    <AtomicCard className="atomic-news" title="News" titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1100px">
+                        <List>
+                            {
+                                this.props.news.map((message, i) => <AtomicNewsTile key={i} image={ message.image } title={ message.title } description={ message.description }/>)
+                            }
+                        </List>
+                    </AtomicCard>
+                </div>
             </Page>
         )
     }
@@ -47,8 +49,8 @@ export default class News extends Component {
 class AtomicNewsTile extends Component {
     render() {
         return (
-            <div className={ this.props.className ? this.props.className : "" + ' ' + "atomic-news-tile" } style={{ paddingTop: "25px" }}>
-                <div style={{ display: "inline-block", verticalAlign: "top" }}>
+            <div className={ this.props.className ? this.props.className : "" + ' ' + "atomic-news-tile" } style={{ paddingTop: "25px", overflow: "hidden" }}>
+                <div style={{ display: "inline-block", verticalAlign: "top", maxHeight: "210px" }}>
                     <img src={this.props.image} />
                 </div>
                 <div style={{ display: "inline-block", paddingTop: "20px" }} >

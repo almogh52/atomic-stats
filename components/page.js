@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   TopAppBar,
   TopAppBarRow,
@@ -7,26 +8,28 @@ import {
   TopAppBarTitle,
   TopAppBarFixedAdjust
 } from 'rmwc/TopAppBar';
-
 import { TextField } from 'rmwc/TextField';
-
 import {
   Drawer,
-  DrawerContent
+  DrawerContent,
+  DrawerToolbarSpacer
 } from 'rmwc/Drawer';
-
 import {
+  ListDivider,
+  ListGroup,
   ListItem,
-  ListItemText
+  ListItemText,
+  ListItemGraphic
 } from 'rmwc/List';
-
 import { Button, ButtonIcon } from 'rmwc/Button';
+import { Elevation } from 'rmwc/Elevation';
 
 import '../styles/page.scss';
 
 import Router from '../routes';
 
 import 'material-components-web/dist/material-components-web.min.css';
+import { Typography } from '../node_modules/rmwc';
 
 class Page extends Component {
   constructor(props) {
@@ -89,22 +92,30 @@ class Page extends Component {
           </TopAppBar>
         </div>
         <div>
-          <Drawer persistent className="atomic-drawer" open={this.state.persistentOpen}>
-            <div className="mdc-drawer__toolbar-spacer" />
+          <Drawer persistent className="atomic-drawer" open={this.state.persistentOpen} style={{ zIndex: "1" }}>
+            <DrawerToolbarSpacer />
             <DrawerContent className="atomic-drawer-content">
-              <ListItem>
-                <ListItemText>Friends</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>My Stats</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>My Profile</ListItemText>
-              </ListItem>
+              <ListGroup>
+                <ListItem>
+                  <ListItemText>Friends</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>My Stats</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>My Profile</ListItemText>
+                </ListItem>
+              </ListGroup>
+              <ListDivider />
+              <ListGroup>
+                <ListItem onClick={() => Router.pushRoute('news')}>
+                  <ListItemText>News</ListItemText>
+                </ListItem>
+              </ListGroup>
             </DrawerContent>
           </Drawer>
         </div>
-        <TopAppBarFixedAdjust className="atomic-content-wrapper">
+        <TopAppBarFixedAdjust className="atomic-content-wrapper" style={{ display: "flex", flexDirection: "column" }}>
           <div className="atomic-search-wrapper">
             <TextField box onKeyPress={(e) => e.key == "Enter" ? this.searchPlayer() : null} invalid={this.state.invalid} ref="searchField" id="atomic-search-field" className="atomic-search-field" label="Epic Games Username" />
             <Button raised accent theme="secondary" className="atomic-search-button" onClick={this.searchPlayer}>
@@ -112,8 +123,14 @@ class Page extends Component {
               Search
             </Button>
           </div>
-          <div className="atomic-content">
+          <div className="atomic-content" style={{ overflow: "hidden" }}>
             {this.props.children}
+          </div>
+          <div style={{ flexGrow: "1", display: "flex", alignItems: "flex-end" }}>
+            <div className="atomic-footer" style={{ width: "100%", marginTop: "50px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", backgroundColor: "var(--drawer-color)", height: "50px" }}>
+                <Typography use="body2" style={{ flexDirection: "row", color: "var(--mdc-theme-primary)", fontSize: "19px" }}>© 2018 Atomic Stats</Typography>
+                <Typography use="caption" style={{ flexDirection: "row", color: "var(--mdc-theme-primary)" }}>This site is not affiliated with Epic Games.</Typography>
+            </div>
           </div>
         </TopAppBarFixedAdjust>
       </div>
