@@ -93,6 +93,21 @@ export default class ObsOverlay extends BasePage {
                             component="span"
                             stepPrecision={0}/>
                     </div>
+                    <div className="atomic-obs-kd" style={{ paddingTop: "8px", minWidth: "270px", display: "flex", justifyContent: "space-evenly" }}>
+                        <div>
+                            <Typography style={{ color: "#26c6da", fontFamily: "Burbank", fontSize: "40px" }}>Overall K/D:</Typography>
+                        </div>
+                        <AnimatedNumber component="text" value={Number(this.state.newStats.kd)}
+                            style={{
+                                paddingRight: "10px",
+                                fontFamily: "Burbank", fontSize: "40px",
+                                color: "white"
+                            }}
+                            duration={1000}
+                            component="span"
+                            stepPrecision={2}
+                            formatValue={n => n.toFixed(2)}/>
+                    </div>
                     <div className="atomic-obs-stats" style={{ paddingTop: "15px", minWidth: "270px", display: "flex", justifyContent: "space-around", flexDirection: "row" }}>
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexWrap: "column" }}>
                             <Typography style={{ color: "#d32f2f", flexDirection: "row", fontFamily: "Burbank", fontSize: "25px" }}>K/D</Typography>

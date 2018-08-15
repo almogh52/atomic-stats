@@ -1,9 +1,9 @@
 {
-  "mini-css-extract-plugin ../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/player.scss": [
+  "mini-css-extract-plugin ../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/register.scss": [
     {
       "modules": {
         "byIdentifier": {
-          "../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/player.scss": 0,
+          "../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/register.scss": 0,
           "../atomic-stats 3/node_modules/css-loader/lib/css-base.js": 1
         },
         "usedIds": {
@@ -22,11 +22,11 @@
       }
     }
   ],
-  "mini-css-extract-plugin ../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/register.scss": [
+  "mini-css-extract-plugin ../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/player.scss": [
     {
       "modules": {
         "byIdentifier": {
-          "../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/register.scss": 0,
+          "../atomic-stats 3/node_modules/css-loader/index.js??ref--6-1!../atomic-stats 3/node_modules/sass-loader/lib/loader.js??ref--6-2!../atomic-stats 3/styles/player.scss": 0,
           "../atomic-stats 3/node_modules/css-loader/lib/css-base.js": 1
         },
         "usedIds": {
@@ -145,31 +145,31 @@
       "../atomic-stats 3/node_modules/core-js/library/modules/_iterators.js": 49,
       "../atomic-stats 3/node_modules/classnames/index.js": 50,
       "../atomic-stats 3/node_modules/chart.js/src/chart.js": 51,
-      "../atomic-stats 3/node_modules/lodash/isEqual.js": 52,
-      "../atomic-stats 3/node_modules/core-js/library/modules/_cof.js": 53,
-      "../atomic-stats 3/node_modules/core-js/library/modules/_property-desc.js": 54,
-      "../atomic-stats 3/node_modules/core-js/library/modules/_a-function.js": 55,
-      "../atomic-stats 3/node_modules/@babel/runtime/helpers/objectSpread.js": 56,
-      "../atomic-stats 3/node_modules/core-js/library/modules/_library.js": 57,
-      "../atomic-stats 3/node_modules/core-js/library/modules/_set-to-string-tag.js": 58,
-      "../atomic-stats 3/node_modules/core-js/library/modules/_object-keys.js": 59,
-      "../atomic-stats 3/node_modules/@babel/runtime/core-js/promise.js": 60,
-      "../atomic-stats 3/node_modules/core-js/library/modules/web.dom.iterable.js": 61,
-      "../atomic-stats 3/node_modules/core-js/library/modules/_for-of.js": 62,
-      "../atomic-stats 3/node_modules/next/dist/lib/router/index.js": 63,
-      "../atomic-stats 3/node_modules/webpack/buildin/module.js": 64,
-      "../atomic-stats 3/node_modules/rmwc/node_modules/prop-types/index.js": 65,
-      "../atomic-stats 3/node_modules/rmwc/Provider/index.js": 66,
-      "../atomic-stats 3/node_modules/chart.js/src/core/core.layouts.js": 67,
-      "../atomic-stats 3/node_modules/chart.js/src/core/core.ticks.js": 68,
-      "../atomic-stats 3/node_modules/lodash/_baseGetTag.js": 69,
-      "../atomic-stats 3/node_modules/lodash/isObjectLike.js": 70,
-      "../atomic-stats 3/node_modules/rmwc/Ripple/index.js": 71,
-      "../atomic-stats 3/node_modules/rmwc/Select/index.js": 72,
-      "../atomic-stats 3/node_modules/rmwc/Drawer/index.js": 73,
-      "../atomic-stats 3/node_modules/rmwc/Menu/index.js": 74,
-      "../atomic-stats 3/node_modules/rmwc/index.js": 75,
-      "../atomic-stats 3/node_modules/react-animated-number/build/index.js": 76,
+      "../atomic-stats 3/node_modules/rmwc/index.js": 52,
+      "../atomic-stats 3/node_modules/react-animated-number/build/index.js": 53,
+      "../atomic-stats 3/node_modules/lodash/isEqual.js": 54,
+      "../atomic-stats 3/node_modules/core-js/library/modules/_cof.js": 55,
+      "../atomic-stats 3/node_modules/core-js/library/modules/_property-desc.js": 56,
+      "../atomic-stats 3/node_modules/core-js/library/modules/_a-function.js": 57,
+      "../atomic-stats 3/node_modules/@babel/runtime/helpers/objectSpread.js": 58,
+      "../atomic-stats 3/node_modules/core-js/library/modules/_library.js": 59,
+      "../atomic-stats 3/node_modules/core-js/library/modules/_set-to-string-tag.js": 60,
+      "../atomic-stats 3/node_modules/core-js/library/modules/_object-keys.js": 61,
+      "../atomic-stats 3/node_modules/@babel/runtime/core-js/promise.js": 62,
+      "../atomic-stats 3/node_modules/core-js/library/modules/web.dom.iterable.js": 63,
+      "../atomic-stats 3/node_modules/core-js/library/modules/_for-of.js": 64,
+      "../atomic-stats 3/node_modules/next/dist/lib/router/index.js": 65,
+      "../atomic-stats 3/node_modules/webpack/buildin/module.js": 66,
+      "../atomic-stats 3/node_modules/rmwc/node_modules/prop-types/index.js": 67,
+      "../atomic-stats 3/node_modules/rmwc/Provider/index.js": 68,
+      "../atomic-stats 3/node_modules/chart.js/src/core/core.layouts.js": 69,
+      "../atomic-stats 3/node_modules/chart.js/src/core/core.ticks.js": 70,
+      "../atomic-stats 3/node_modules/lodash/_baseGetTag.js": 71,
+      "../atomic-stats 3/node_modules/lodash/isObjectLike.js": 72,
+      "../atomic-stats 3/node_modules/rmwc/Ripple/index.js": 73,
+      "../atomic-stats 3/node_modules/rmwc/Select/index.js": 74,
+      "../atomic-stats 3/node_modules/rmwc/Drawer/index.js": 75,
+      "../atomic-stats 3/node_modules/rmwc/Menu/index.js": 76,
       "../atomic-stats 3/node_modules/core-js/library/modules/_object-pie.js": 77,
       "../atomic-stats 3/node_modules/@babel/runtime/core-js/object/define-property.js": 78,
       "../atomic-stats 3/node_modules/core-js/library/modules/_uid.js": 79,
@@ -1427,15 +1427,15 @@
       "static/runtime/webpack.js": 1,
       "styles": 2,
       "static/runtime/main.js": 3,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/_app.js": 4,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/index.js": 5,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/login.js": 6,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/news.js": 7,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/obs.js": 8,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/player.js": 9,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/register.js": 10,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/shop.js": 11,
-      "static/b32ca275-b593-4db0-b000-6c4331480efa/pages/_error.js": 12
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/_app.js": 4,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/index.js": 5,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/login.js": 6,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/news.js": 7,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/obs.js": 8,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/player.js": 9,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/register.js": 10,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/shop.js": 11,
+      "static/aab4abe7-6655-4b34-83b1-f0c8ff4bbd2b/pages/_error.js": 12
     },
     "bySource": {},
     "usedIds": [

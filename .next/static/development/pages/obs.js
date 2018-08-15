@@ -85850,7 +85850,7 @@ function (_BasePage) {
           }
         }, "Player not found!");
       } else {
-        var _React$createElement, _React$createElement2, _React$createElement3, _React$createElement4;
+        var _React$createElement, _React$createElement2, _React$createElement3, _React$createElement4, _React$createElement5;
 
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "atomic-obs-overlay",
@@ -85914,6 +85914,48 @@ function (_BasePage) {
           fileName: _jsxFileName,
           lineNumber: 86
         }), _React$createElement))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "atomic-obs-kd",
+          style: {
+            paddingTop: "8px",
+            minWidth: "270px",
+            display: "flex",
+            justifyContent: "space-evenly"
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 96
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
+          style: {
+            color: "#26c6da",
+            fontFamily: "Burbank",
+            fontSize: "40px"
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 98
+          }
+        }, "Overall K/D:")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_animated_number__WEBPACK_IMPORTED_MODULE_5___default.a, (_React$createElement2 = {
+          component: "text",
+          value: Number(this.state.newStats.kd),
+          style: {
+            paddingRight: "10px",
+            fontFamily: "Burbank",
+            fontSize: "40px",
+            color: "white"
+          },
+          duration: 1000
+        }, _defineProperty(_React$createElement2, "component", "span"), _defineProperty(_React$createElement2, "stepPrecision", 2), _defineProperty(_React$createElement2, "formatValue", function formatValue(n) {
+          return n.toFixed(2);
+        }), _defineProperty(_React$createElement2, "__source", {
+          fileName: _jsxFileName,
+          lineNumber: 100
+        }), _React$createElement2))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "atomic-obs-stats",
           style: {
             paddingTop: "15px",
@@ -85924,7 +85966,7 @@ function (_BasePage) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 96
+            lineNumber: 111
           }
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           style: {
@@ -85935,7 +85977,7 @@ function (_BasePage) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 97
+            lineNumber: 112
           }
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
           style: {
@@ -85946,9 +85988,9 @@ function (_BasePage) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 98
+            lineNumber: 113
           }
-        }, "K/D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_animated_number__WEBPACK_IMPORTED_MODULE_5___default.a, (_React$createElement2 = {
+        }, "K/D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_animated_number__WEBPACK_IMPORTED_MODULE_5___default.a, (_React$createElement3 = {
           component: "text",
           value: this.div(this.state.newStats.kills - this.props.startStats.kills, this.state.newStats.matches - this.state.newStats.wins - (this.props.startStats.matches - this.props.startStats.wins)),
           style: {
@@ -85959,12 +86001,12 @@ function (_BasePage) {
             color: "white"
           },
           duration: 1000
-        }, _defineProperty(_React$createElement2, "component", "span"), _defineProperty(_React$createElement2, "stepPrecision", 2), _defineProperty(_React$createElement2, "formatValue", function formatValue(n) {
+        }, _defineProperty(_React$createElement3, "component", "span"), _defineProperty(_React$createElement3, "stepPrecision", 2), _defineProperty(_React$createElement3, "formatValue", function formatValue(n) {
           return n.toFixed(2);
-        }), _defineProperty(_React$createElement2, "__source", {
+        }), _defineProperty(_React$createElement3, "__source", {
           fileName: _jsxFileName,
-          lineNumber: 99
-        }), _React$createElement2))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          lineNumber: 114
+        }), _React$createElement3))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           style: {
             display: "flex",
             flexDirection: "column",
@@ -85973,7 +86015,7 @@ function (_BasePage) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 111
+            lineNumber: 126
           }
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
           style: {
@@ -85984,9 +86026,9 @@ function (_BasePage) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 112
+            lineNumber: 127
           }
-        }, "Win %"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_animated_number__WEBPACK_IMPORTED_MODULE_5___default.a, (_React$createElement3 = {
+        }, "Win %"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_animated_number__WEBPACK_IMPORTED_MODULE_5___default.a, (_React$createElement4 = {
           component: "text",
           value: this.div(this.state.newStats.wins - this.props.startStats.wins, this.state.newStats.matches - this.props.startStats.matches) * 100,
           style: {
@@ -85997,12 +86039,12 @@ function (_BasePage) {
             color: "white"
           },
           duration: 1000
-        }, _defineProperty(_React$createElement3, "component", "span"), _defineProperty(_React$createElement3, "stepPrecision", 2), _defineProperty(_React$createElement3, "formatValue", function formatValue(n) {
+        }, _defineProperty(_React$createElement4, "component", "span"), _defineProperty(_React$createElement4, "stepPrecision", 2), _defineProperty(_React$createElement4, "formatValue", function formatValue(n) {
           return n.toFixed(2) + "%";
-        }), _defineProperty(_React$createElement3, "__source", {
+        }), _defineProperty(_React$createElement4, "__source", {
           fileName: _jsxFileName,
-          lineNumber: 113
-        }), _React$createElement3))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          lineNumber: 128
+        }), _React$createElement4))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           style: {
             display: "flex",
             flexDirection: "column",
@@ -86011,7 +86053,7 @@ function (_BasePage) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 125
+            lineNumber: 140
           }
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rmwc__WEBPACK_IMPORTED_MODULE_4__["Typography"], {
           style: {
@@ -86022,9 +86064,9 @@ function (_BasePage) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 126
+            lineNumber: 141
           }
-        }, "Matches"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_animated_number__WEBPACK_IMPORTED_MODULE_5___default.a, (_React$createElement4 = {
+        }, "Matches"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_animated_number__WEBPACK_IMPORTED_MODULE_5___default.a, (_React$createElement5 = {
           component: "text",
           value: this.state.newStats.matches - this.props.startStats.matches,
           style: {
@@ -86035,10 +86077,10 @@ function (_BasePage) {
             color: "white"
           },
           duration: 1000
-        }, _defineProperty(_React$createElement4, "component", "span"), _defineProperty(_React$createElement4, "stepPrecision", 0), _defineProperty(_React$createElement4, "__source", {
+        }, _defineProperty(_React$createElement5, "component", "span"), _defineProperty(_React$createElement5, "stepPrecision", 0), _defineProperty(_React$createElement5, "__source", {
           fileName: _jsxFileName,
-          lineNumber: 127
-        }), _React$createElement4)))));
+          lineNumber: 142
+        }), _React$createElement5)))));
       }
     }
   }]);
