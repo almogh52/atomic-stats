@@ -1,0 +1,9 @@
+.atomic-register-text-field input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px var(--mdc-theme-secondary) inset;
+    -webkit-text-fill-color: white !important;
+}
+
+.atomic-recaptcha {
+    display: block;
+    margin: 15px 0px 22px 0px;
+}

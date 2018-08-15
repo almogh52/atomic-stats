@@ -18,25 +18,25 @@ import {
   ListDivider,
   ListGroup,
   ListItem,
-  ListItemText,
-  ListItemGraphic
+  ListItemText
 } from 'rmwc/List';
 import { Button, ButtonIcon } from 'rmwc/Button';
-import { Elevation } from 'rmwc/Elevation';
+import { Menu, MenuItem, MenuAnchor } from 'rmwc/Menu';
 
 import '../styles/page.scss';
 
-import Router from '../routes';
+import Router from './atomic-router';
 
 import 'material-components-web/dist/material-components-web.min.css';
-import { Typography } from '../node_modules/rmwc';
+import { Typography } from 'rmwc/Typography';
 
 class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
       persistentOpen: true, 
-      invalid: false
+      invalid: false,
+      authMenu: false
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -62,7 +62,6 @@ class Page extends Component {
       document.querySelector('.atomic-content-wrapper').style.animationDuration = "250ms";
       document.querySelector('.atomic-content-wrapper').style.paddingLeft = "239px";
     }
-
   }
 
   searchPlayer() {
@@ -88,6 +87,34 @@ class Page extends Component {
                 <TopAppBarNavigationIcon theme="primary" use="menu" onClick={this.menuBtnPressed}/>
                 <TopAppBarTitle>Atomic Stats</TopAppBarTitle>
               </TopAppBarSection>
+              <TopAppBarSection alignEnd>
+                {this.props.user ? (
+                  <MenuAnchor>
+                    <Button className="atomic-auth-button" onClick={evt => this.setState({'authMenu': !this.state.authMenu})}>
+                      <ButtonIcon>person</ButtonIcon>
+                      {this.props.user.username}
+                    </Button>
+
+                    <form id="atomic-logout-form" action="/logout" method="POST" />
+                    <Menu
+                      className="atomic-menu atomic-auth-menu"
+                      open={this.state.authMenu}
+                      onClose={evt => this.setState({authMenu: false})}
+                    >
+                      <MenuItem onClick={() => {
+                        document.getElementById("atomic-logout-form").submit()
+                      }}>Logout</MenuItem>
+                      
+                    </Menu>
+                  </MenuAnchor>
+                ) : (
+                  <div className="atomic-auth-buttons">
+                    <Button className="atomic-auth-button" onClick={() => Router.pushRoute("login")}>Login</Button>
+                    <Typography use="button" style={{ color: "white", position: "relative", top: "2px", display: "inline-block", padding: "10px" }}>or</Typography>
+                    <Button className="atomic-auth-button" onClick={() => Router.pushRoute("register")}>Register</Button>
+                  </div>
+                )}
+              </TopAppBarSection>
             </TopAppBarRow>
           </TopAppBar>
         </div>
@@ -111,13 +138,16 @@ class Page extends Component {
                 <ListItem onClick={() => Router.pushRoute('news')}>
                   <ListItemText>News</ListItemText>
                 </ListItem>
+                <ListItem onClick={() => Router.pushRoute('shop')}>
+                  <ListItemText>Shop</ListItemText>
+                </ListItem>
               </ListGroup>
             </DrawerContent>
           </Drawer>
         </div>
         <TopAppBarFixedAdjust className="atomic-content-wrapper" style={{ display: "flex", flexDirection: "column" }}>
           <div className="atomic-search-wrapper">
-            <TextField box onKeyPress={(e) => e.key == "Enter" ? this.searchPlayer() : null} invalid={this.state.invalid} ref="searchField" id="atomic-search-field" className="atomic-search-field" label="Epic Games Username" />
+            <TextField box onKeyPress={(e) => e.key == "Enter" ? this.searchPlayer() : null} invalid={this.state.invalid} ref="searchField" id="atomic-search-field" className="atomic-text-field atomic-search-field" label="Epic Games Username" />
             <Button raised accent theme="secondary" className="atomic-search-button" onClick={this.searchPlayer}>
               <ButtonIcon>search</ButtonIcon>
               Search

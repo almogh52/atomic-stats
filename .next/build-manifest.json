@@ -1,56 +1,20 @@
 {
   "pages": {
-    "/index": [
-      "static/runtime/webpack-323965a3945d1647131a.js",
-      "static/css/commons.241ebfdd.chunk.css",
-      "static/chunks/762e8670e0b93cce7b2a.js",
-      "static/css/styles.1b2ca6b8.chunk.css",
-      "static/chunks/682f64b04de9024619ba.js",
-      "static/runtime/main-0bda0a8af064617427cc.js"
-    ],
-    "/news": [
-      "static/runtime/webpack-323965a3945d1647131a.js",
-      "static/css/commons.241ebfdd.chunk.css",
-      "static/chunks/762e8670e0b93cce7b2a.js",
-      "static/css/styles.1b2ca6b8.chunk.css",
-      "static/chunks/682f64b04de9024619ba.js",
-      "static/runtime/main-0bda0a8af064617427cc.js"
-    ],
-    "/player": [
-      "static/runtime/webpack-323965a3945d1647131a.js",
-      "static/css/commons.241ebfdd.chunk.css",
-      "static/chunks/762e8670e0b93cce7b2a.js",
-      "static/css/styles.1b2ca6b8.chunk.css",
-      "static/chunks/682f64b04de9024619ba.js",
-      "static/runtime/main-0bda0a8af064617427cc.js"
-    ],
-    "/shop": [
-      "static/runtime/webpack-323965a3945d1647131a.js",
-      "static/css/commons.241ebfdd.chunk.css",
-      "static/chunks/762e8670e0b93cce7b2a.js",
-      "static/css/styles.1b2ca6b8.chunk.css",
-      "static/chunks/682f64b04de9024619ba.js",
-      "static/runtime/main-0bda0a8af064617427cc.js"
-    ],
     "/_app": [
-      "static/runtime/webpack-323965a3945d1647131a.js",
-      "static/css/commons.241ebfdd.chunk.css",
-      "static/chunks/762e8670e0b93cce7b2a.js",
-      "static/runtime/main-0bda0a8af064617427cc.js"
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ],
     "/_error": [
-      "static/runtime/webpack-323965a3945d1647131a.js",
-      "static/css/commons.241ebfdd.chunk.css",
-      "static/chunks/762e8670e0b93cce7b2a.js",
-      "static/runtime/main-0bda0a8af064617427cc.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ],
-    "/": [
-      "static/runtime/webpack-323965a3945d1647131a.js",
-      "static/css/commons.241ebfdd.chunk.css",
-      "static/chunks/762e8670e0b93cce7b2a.js",
-      "static/css/styles.1b2ca6b8.chunk.css",
-      "static/chunks/682f64b04de9024619ba.js",
-      "static/runtime/main-0bda0a8af064617427cc.js"
+    "/obs": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ]
   }
 }

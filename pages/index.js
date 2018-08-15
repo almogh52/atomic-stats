@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-import Page from '../components/page.js'
+import BasePage from '../components/base-page.js';
 
-class Home extends Component {
+class Home extends BasePage {
   render() {
     return (
-      <Page>
-        <h1>Home page not available yet!</h1>
-      </Page>
+      <h1>Home page not available yet!</h1>
     );
   }
 }

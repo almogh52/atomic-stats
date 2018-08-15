@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 
-import Page from '../components/page';
+import BasePage from '../components/base-page';
 import '../styles/player.scss';
 
 import { Select } from 'rmwc/Select';
@@ -50,8 +50,8 @@ const doughnutCallbacks = {
   }
 }
 
-export default class Player extends Component {
-  static async getInitialProps({ res, query }) {
+export default class Player extends BasePage {
+  static async getInitialProps({ query }) {
     var stats = undefined;
     
     await fetch(`https://atomic-api.herokuapp.com/player/${query.username}`)
@@ -150,9 +150,7 @@ export default class Player extends Component {
     if (this.props.stats === undefined)
     {
       return (
-        <Page>
-          <h1>Player not found!</h1>
-        </Page>
+        <h1>Player not found!</h1>
       )
     }
 
@@ -200,7 +198,7 @@ export default class Player extends Component {
     var kdChartMax = Math.ceil(Math.max(this.props.stats.stats[this.state.seasonRange][this.state.platform].solo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].duo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].squad['kd']) / 10) * 10
 
     return (
-      <Page>
+      <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
         <Dialog
           open={ this.state.chartData !== undefined }
           onClose={evt => this.setState({ chartData: undefined, chartType: undefined, chartTitle: undefined })}
@@ -219,60 +217,58 @@ export default class Player extends Component {
           <DialogBackdrop />
         </Dialog>
 
-        <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
-          <AtomicCard className="atomic-player-total-stats-card" title={this.props.stats.displayName} titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1150px">
-            <div className="atomic-section">
-              <Select className="atomic-select atomic-season-range-select"
-                box
-                value={this.state.seasonRange}
-                onChange={evt => this.setState({seasonRange: evt.target.value})}
-                label="Season Range"
-                options={[
-                  {
-                    label: 'All Seasons',
-                    value: 'alltime',
-                    color: "black"
-                  },
-                  {
-                    label: 'Season 5',
-                    value: 'weekly',
-                    color: "black"
-                  }
-                ]}
-              />
+        <AtomicCard className="atomic-player-total-stats-card" title={this.props.stats.displayName} titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1150px">
+          <div className="atomic-section">
+            <Select className="atomic-select atomic-season-range-select"
+              box
+              value={this.state.seasonRange}
+              onChange={evt => this.setState({seasonRange: evt.target.value})}
+              label="Season Range"
+              options={[
+                {
+                  label: 'All Seasons',
+                  value: 'alltime',
+                  color: "black"
+                },
+                {
+                  label: 'Season 5',
+                  value: 'weekly',
+                  color: "black"
+                }
+              ]}
+            />
 
-              <Select className="atomic-select atomic-platform-select"
-                box
-                value={this.state.platform}
-                onChange={evt => this.setState({platform: evt.target.value})}
-                label="Platform"
-                style={{ minWidth: "140px" }}
-                options={ platformSelect }
-              />
-            </div>
-
-            <hr className="atomic-divider" style={{ marginTop: "68px", marginBottom: "10px" }}/>
-
-            <div className="atomic-section">
-              <GridList tileAspect="3x2" style={{ display: "flex" }}>
-                <AtomicStatTile onClick={ () => this.setState({ chartData: 'score', chartType: 'doughnut', chartTitle: "Score" }) } title="Score" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.score} />
-                <AtomicStatTile onClick={ () => this.setState({ chartData: 'matches', chartType: 'doughnut', chartTitle: "Matches" }) } title="Matches" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.matches} />
-                <AtomicStatTile onClick={ () => this.setState({ chartData: 'wins', chartType: 'doughnut', chartTitle: "Wins" }) } title="Wins" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.wins} />
-                <AtomicStatTile onClick={ () => this.setState({ chartData: 'kills', chartType: 'doughnut', chartTitle: "Kills" }) } title="Kills" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kills} />
-                <AtomicStatTile onClick={ () => this.setState({ chartData: 'kd', chartType: 'bar', chartTitle: "K/D Ratio", chartBarMax: kdChartMax }) } title="K/D Ratio" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kd} />
-                <AtomicStatTile onClick={ () => this.setState({ chartData: 'winrate', chartType: 'bar', chartTitle: "Win %", chartBarMax: 100 }) } title="Win %" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.winrate} />
-              </GridList>
-              <Typography style={{ paddingLeft: "15px", color: "#9e9e9e" }} use="caption">Tip: Click on the stat for detailed chart!</Typography>
-            </div>
-          </AtomicCard>
-
-          <div className="atomic-player-stats" style={{ paddingTop: "50px", display: "flex", justifyContent: "space-evenly" }}>
-            <AtomicModeStatsCard tops={['10', '25']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top10: "Top 10", top25: "Top 25", kpm: "Kills per Match", spm: "Score per Match" }} title="Solo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].solo} color="#00b0ff" />
-            <AtomicModeStatsCard tops={['5', '12']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top5: "Top 5", top12: "Top 12", kpm: "Kills per Match", spm: "Score per Match" }} title="Duo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].duo} color="#76ff03" />
-            <AtomicModeStatsCard tops={['3', '6']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top3: "Top 3", top6: "Top 6", kpm: "Kills per Match", spm: "Score per Match" }} title="Squad" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].squad} color="#ff9100" />
+            <Select className="atomic-select atomic-platform-select"
+              box
+              value={this.state.platform}
+              onChange={evt => this.setState({platform: evt.target.value})}
+              label="Platform"
+              style={{ minWidth: "140px" }}
+              options={ platformSelect }
+            />
           </div>
+
+          <hr className="atomic-divider" style={{ marginTop: "68px", marginBottom: "10px" }}/>
+
+          <div className="atomic-section">
+            <GridList tileAspect="3x2" style={{ display: "flex" }}>
+              <AtomicStatTile onClick={ () => this.setState({ chartData: 'score', chartType: 'doughnut', chartTitle: "Score" }) } title="Score" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.score} />
+              <AtomicStatTile onClick={ () => this.setState({ chartData: 'matches', chartType: 'doughnut', chartTitle: "Matches" }) } title="Matches" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.matches} />
+              <AtomicStatTile onClick={ () => this.setState({ chartData: 'wins', chartType: 'doughnut', chartTitle: "Wins" }) } title="Wins" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.wins} />
+              <AtomicStatTile onClick={ () => this.setState({ chartData: 'kills', chartType: 'doughnut', chartTitle: "Kills" }) } title="Kills" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kills} />
+              <AtomicStatTile onClick={ () => this.setState({ chartData: 'kd', chartType: 'bar', chartTitle: "K/D Ratio", chartBarMax: kdChartMax }) } title="K/D Ratio" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.kd} />
+              <AtomicStatTile onClick={ () => this.setState({ chartData: 'winrate', chartType: 'bar', chartTitle: "Win %", chartBarMax: 100 }) } title="Win %" value={this.props.stats.stats[this.state.seasonRange][this.state.platform].total.winrate} />
+            </GridList>
+            <Typography style={{ paddingLeft: "15px", color: "#9e9e9e" }} use="caption">Tip: Click on the stat for detailed chart!</Typography>
+          </div>
+        </AtomicCard>
+
+        <div className="atomic-player-stats" style={{ paddingTop: "50px", display: "flex", justifyContent: "space-evenly" }}>
+          <AtomicModeStatsCard tops={['10', '25']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top10: "Top 10", top25: "Top 25", kpm: "Kills per Match", spm: "Score per Match" }} title="Solo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].solo} color="#00b0ff" />
+          <AtomicModeStatsCard tops={['5', '12']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top5: "Top 5", top12: "Top 12", kpm: "Kills per Match", spm: "Score per Match" }} title="Duo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].duo} color="#76ff03" />
+          <AtomicModeStatsCard tops={['3', '6']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top3: "Top 3", top6: "Top 6", kpm: "Kills per Match", spm: "Score per Match" }} title="Squad" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].squad} color="#ff9100" />
         </div>
-      </Page>
+      </div>
     );
   }
 }
@@ -291,7 +287,7 @@ class AtomicModeStatsCard extends Component {
     var top2 = 'Top ' + this.props.tops[1]
 
     var keys = {
-      'Defeats': { value: this.props.stats.matches - this.props.stats.wins - (this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins) - (this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins), color: '#f44336' }, 
+      'Top 100': { value: this.props.stats.matches - this.props.stats.wins - (this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins) - (this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins), color: '#f44336' }, 
       'Wins': { value: this.props.stats.wins, color: "#2196f3" },
       [top1]: { value: this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins, color: "#4caf50" },
       [top2]: { value: this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]], color: "#ff9800" }

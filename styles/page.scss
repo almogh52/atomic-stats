@@ -3,6 +3,12 @@
 @import "@material/textfield/mixins";
 @import "@material/top-app-bar/mixins";
 @import "@material/drawer/mixins";
+@import "@material/button/mixins";
+
+@font-face {
+  font-family: "Burbank";
+  src: url("/static/Burbank.ttf");
+};
 
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
@@ -83,6 +89,23 @@
   to {padding-left: 0px;}
 }
 
+.atomic-auth-button::before, .atomic-auth-button::after {
+  background-color: white !important;
+}
+
+.atomic-menu {
+  background-color: var(--drawer-color) !important;
+}
+
+.atomic-menu .mdc-list-item::before, .atomic-menu .mdc-list-item::after {
+  background-color: white !important;
+}
+
+.atomic-menu .mdc-list-item {
+  
+  color: white !important;
+}
+
 .atomic-content-wrapper {
   // Set the initial animation as the opening animation
   @include animation(0, 250ms, move-right);
@@ -104,6 +127,21 @@
   min-height: calc(100vh - 64px);
 }
 
+.atomic-text-field {
+  // Set background color as secondary color
+  :not(.mdc-text-field--disabled):not(.mdc-line-ripple) {
+    background-color: var(--mdc-theme-secondary) !important;
+  }
+
+  .mdc-floating-label {
+    color: var(--mdc-theme-primary) !important; 
+  }
+}
+
+.atomic-text-field input {
+  color: white !important;
+}
+
 .atomic-search-field {
   border-radius: 5px;
   min-width: 30%;
@@ -114,15 +152,6 @@
 
   // Set right distance to 10px
   margin-right: 10px;
-
-  // Set background color as secondary color
-  :not(.mdc-text-field--disabled):not(.mdc-line-ripple) {
-    background-color: var(--mdc-theme-secondary) !important;
-  }
-
-  .mdc-floating-label {
-    color: var(--mdc-theme-primary) !important; 
-  }
 }
 
 .atomic-icon-toggle-selected {
@@ -137,8 +166,7 @@
   // Set the font of the search field
   @include mdc-typography(headline5);
 
-  // Set the color to white and align text in the middle
-  color: white !important;
+  // Align text in the middle
   text-align: center;
 }
 

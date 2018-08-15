@@ -24,8 +24,10 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+          <link rel='stylesheet' type='text/css' href='http://ricostacruz.com/nprogress/nprogress.css' />
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossOrigin="anonymous" />
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
           <script
             dangerouslySetInnerHTML={{ __html:
               '(adsbygoogle = window.adsbygoogle || []).push({ \

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -206,19 +206,35 @@ function (_Document) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
         rel: "stylesheet",
+        type: "text/css",
+        href: "http://ricostacruz.com/nprogress/nprogress.css",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
+        rel: "stylesheet",
         href: "https://use.fontawesome.com/releases/v5.0.13/css/all.css",
         integrity: "sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp",
         crossOrigin: "anonymous",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 28
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
         async: true,
         src: "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 29
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+        src: "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit",
+        async: true,
+        defer: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -229,12 +245,12 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 31
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 39
         }
       }, "Atomic Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", {
         style: {
@@ -243,17 +259,17 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 41
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 42
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 43
         }
       })));
     }
@@ -266,7 +282,7 @@ function (_Document) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!**********************************!*\
   !*** multi ./pages/_document.js ***!
   \**********************************/

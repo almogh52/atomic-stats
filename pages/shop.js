@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 
-import Page from '../components/page';
 import AtomicCard from '../components/atomic-card';
 
 import { GridList } from 'rmwc/GridList'
-import { Typography, Grid } from '../node_modules/rmwc';
+import { Typography } from 'rmwc/Typography';
 
-export default class News extends Component {
+import dateFormat from 'dateformat';
+import BasePage from '../components/base-page';
+
+export default class News extends BasePage {
     static async getInitialProps() {
         var shop = undefined;
         
@@ -24,29 +26,36 @@ export default class News extends Component {
             //stats = {displayName: "Unknown"};
           })
 
-        console.log(shop)
-
         return {shop};
     }
 
     render() {
+        var updateDate = new Date(this.props.shop.date)
+
+        var updateDateFormat = dateFormat(updateDate, "dd/mm/yyyy, HH:MM")
+
         return (
-            <Page>
-                <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
-                    <AtomicCard className="atomic-featured-shop" title="Featured" titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1100px">
-                        <GridList>
-                            {
-                                this.props.shop.featured.map((item, i) => <AtomicFeaturedShopItem key={i} item={item} />)
-                            }
-                        </GridList>
-                    </AtomicCard>
-                </div>
-            </Page>
+            <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
+                <AtomicCard className="atomic-featured-shop" title="Featured Shop" subtitle={ "Last updated at " + updateDateFormat } titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1010px">
+                    <GridList>
+                        {
+                            this.props.shop.featured.map((item, i) => <AtomicShopItem key={i} item={item} />)
+                        }
+                    </GridList>
+                </AtomicCard>
+                <AtomicCard className="atomic-daily-shop" title="Daily Shop" titleSize="headline3" titleColor="var(--mdc-theme-primary)" outlineColor="var(--mdc-theme-primary)" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1010px" style={{ paddingTop: "50px" }}>
+                    <GridList>
+                        {
+                            this.props.shop.daily.map((item, i) => <AtomicShopItem key={i} item={item} />)
+                        }
+                    </GridList>
+                </AtomicCard>
+            </div>
         )
     }
 }
 
-class AtomicFeaturedShopItem extends Component {
+class AtomicShopItem extends Component {
     constructor(props) {
         super(props);
 
@@ -73,15 +82,25 @@ class AtomicFeaturedShopItem extends Component {
 
     render() {
         return (
-            <div className={ this.props.className ? this.props.className : "" + ' ' + "atomic-featured-shop-item" } style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", height: "400px", width: "300px", background: this.colorForItem() }}>
-                {/*<div style={{ position: "absolute", bottom: "0", left: "0", zIndex: "1000", width: "300px", height: "85px", backgroundColor: "rgba(0, 0, 0, 0.3)", textAlign: "center" }}>
-                    <div style={{ paddingTop: "5px" }}><span style={{ color: "white", fontFamily: "Burbank", fontSize: "50px", letterSpacing: "1px" }}>{this.props.item.name}</span></div>
-                    <p style={{ color: "white", fontFamily: "Burbank", fontSize: "25px", letterSpacing: "1px" }}>
-                        <img src="https://image.fnbr.co/price/icon_vbucks.png" style={{ width: "30px" }} />
-                        {this.props.item.price}
-                    </p>
-                </div>*/}
-                <img src={this.props.item.image} style={{ display: "block", width: this.props.item.image.includes("featured") ? "" : "300px", height: this.props.item.image.includes("featured") ? "100%" : "300px" }} />
+            <div className={ this.props.className ? this.props.className : "" + ' ' + "atomic-featured-shop-item" } style={{ padding: "10px 10px", height: "225px", width: "225px" }}>
+                <div style={{ position: "relative", display: "flex", alignItems: "flex-end", justifyContent: "center", height: "100%", width: "100%", background: this.colorForItem() }}>
+                    <AtomicShopItemOverlay name={this.props.item.name} price={this.props.item.price} />
+                    <img src={this.props.item.image} style={{ width: "95%", height: "95%" }} />
+                </div>
+            </div>
+        )
+    }
+}
+
+class AtomicShopItemOverlay extends Component {
+    render() {
+        return (
+            <div style={{ position: "absolute", bottom: "0", left: "0", zIndex: "1000", overflow: "hidden", width: "225px", height: "40px", backgroundColor: "rgba(0, 0, 0, 0.4)", textAlign: "center", display: "flex", justifyContent: "space-around", flexDirection: "column", flexWrap: "wrap" }}>
+                <Typography use="headline4" style={{ color: "white", fontFamily: "Burbank", fontSize: "25px", paddingTop: "3px" }}>{this.props.name}</Typography>
+                <span style={{ color: "white" }}>
+                    <img src="https://image.fnbr.co/price/icon_vbucks.png" style={{ paddingTop: "15px", width: "20px" }} /> 
+                    <Typography use="headline4" style={{ position: "relative", top: "-4px", fontFamily: "Burbank", fontSize: "18px" }}>{" " + this.props.price}</Typography>
+                </span>
             </div>
         )
     }
