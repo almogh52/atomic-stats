@@ -5,11 +5,6 @@
 @import "@material/drawer/mixins";
 @import "@material/button/mixins";
 
-@font-face {
-  font-family: "Burbank";
-  src: url("/static/Burbank.ttf");
-};
-
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
       @content;
@@ -63,18 +58,24 @@
 
 .atomic-drawer {
   // Fix the position of the drawer and make it fullscreen
-  position: fixed;
+  position: fixed !important;
   height: 100%;
-}
-
-.atomic-drawer .mdc-drawer__drawer {
   background-color: var(--drawer-color) !important;
 }
 
-.atomic-drawer .mdc-drawer__drawer * {
+.atomic-drawer .mdc-drawer__content {
+  background-color: var(--drawer-color) !important;
+}
+
+.atomic-drawer-subheader {
+  font-size: 12px !important;
+  color: #80d8ff !important;
+}
+
+.atomic-drawer .mdc-drawer__content * {
   @include mdc-states-base-color(white);
 
-  color: var(--mdc-theme-primary) !important;
+  color: #00e5ff;
 }
 
 @include keyframes("move-right")
@@ -89,8 +90,8 @@
   to {padding-left: 0px;}
 }
 
-.atomic-auth-button::before, .atomic-auth-button::after {
-  background-color: white !important;
+.atomic-auth-button {
+  color: var(--mdc-theme-primary) !important;
 }
 
 .atomic-menu {
@@ -163,8 +164,7 @@
 }
 
 .atomic-search-field input {
-  // Set the font of the search field
-  @include mdc-typography(headline5);
+  font-size: 25px;
 
   // Align text in the middle
   text-align: center;
@@ -176,7 +176,9 @@
 }
 
 .atomic-search-wrapper {
-  height: 200px;
+  margin-top: 64px;
+
+  height: 136px;
   min-width: 100%;
 
   // Align vertically children
@@ -211,7 +213,7 @@
 
 .atomic-content {
   padding-top: 10px;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 10px;
   padding-bottom: 10px;
 }

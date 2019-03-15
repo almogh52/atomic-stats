@@ -4,14 +4,15 @@ import fetch from 'node-fetch';
 import BasePage from '../components/base-page';
 import '../styles/player.scss';
 
-import { Select } from 'rmwc/Select';
-import { Typography } from 'rmwc/Typography';
+import { Button } from "@rmwc/button";
+import { Select } from '@rmwc/select';
+import { Typography } from '@rmwc/typography';
 import { 
   GridList, 
   GridTile,   
   GridTilePrimary,
   GridTileSecondary
-} from 'rmwc/GridList';
+} from '@rmwc/grid-list';
 import {
   Dialog,
   DialogSurface,
@@ -21,12 +22,25 @@ import {
   DialogFooter,
   DialogFooterButton,
   DialogBackdrop
-} from 'rmwc/Dialog';
-import { Ripple } from 'rmwc/Ripple';
+} from '@rmwc/dialog';
+import { Ripple } from '@rmwc/ripple';
+import {
+  DataTable,
+  DataTableContent,
+  DataTableHead,
+  DataTableBody,
+  DataTableHeadCell,
+  DataTableRow,
+  DataTableCell
+} from '@rmwc/data-table';
+
+import '@rmwc/data-table/data-table.css'
 
 import { Bar, Doughnut } from 'react-chartjs-2';
 
 import AtomicCard from '../components/atomic-card';
+
+import timeAgo from 'time-ago';
 
 const numberWithCommas = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -50,11 +64,15 @@ const doughnutCallbacks = {
   }
 }
 
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 export default class Player extends BasePage {
   static async getInitialProps({ query }) {
-    var stats = undefined;
+    var stats = undefined, matches = undefined;
     
-    await fetch(`https://atomic-api.herokuapp.com/player/${query.username}`)
+    await fetch(`http://35.177.120.249:5000/player/${query.username}`)
       .then(response => response.json())
       .then(json => {
         if ('error' in json) {
@@ -67,7 +85,20 @@ export default class Player extends BasePage {
         //stats = {displayName: "Unknown"};
       })
 
-    return {stats};
+    await fetch(`http://35.177.120.249:5000/player/${query.username}/matches`)
+      .then(response => response.json())
+      .then(json => {
+        if ('error' in json) {
+          //stats = {displayName: "Unknown"};
+        } else {
+          matches = json;
+        }
+      })
+      .catch(ex => {
+        //stats = {displayName: "Unknown"};
+      })
+
+    return {stats, matches};
   }
 
   constructor(props) {
@@ -79,11 +110,31 @@ export default class Player extends BasePage {
 
       chartData: undefined,
       chartType: undefined,
-      chartTitle: undefined
+      chartTitle: undefined,
+
+      matchHistoryMax: 5
     };
 
     // This binding is necessary to make `this` work in the callback
     this.createDoughnutData = this.createDoughnutData.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.stats)
+    {
+      document.title = `${this.props.stats.displayName}'s Stats · Atomic Stats`
+    } else {
+      document.title = "Player Not Found · Atomic Stats"
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.stats)
+    {
+      document.title = `${this.props.stats.displayName}'s Stats · Atomic Stats`
+    } else {
+      document.title = "Player Not Found · Atomic Stats"
+    }
   }
 
   createDoughnutData(key) {
@@ -160,19 +211,35 @@ export default class Player extends BasePage {
     if (this.props.stats.stats[this.state.seasonRange].pc !== undefined)
       platformSelect.push({
         label: 'PC',
-        value: 'pc'
+        value: 'pc',
+        color: 'black'
       })
 
     if (this.props.stats.stats[this.state.seasonRange].ps4 !== undefined)
       platformSelect.push({
         label: 'PlayStation 4',
-        value: 'ps4'
+        value: 'ps4',
+        color: 'black'
       })
 
     if (this.props.stats.stats[this.state.seasonRange].xb1 !== undefined)
       platformSelect.push({
         label: 'Xbox One',
-        value: 'xb1'
+        value: 'xb1',
+        color: 'black'
+      })
+
+    var seasonSelect = [{
+      label: 'All Seasons',
+      value: 'alltime',
+      color: "black"
+    }]
+
+    if (this.props.stats.stats.weekly != undefined)
+      seasonSelect.push({
+        label: 'Season 6',
+        value: 'weekly',
+        color: "black"
       })
 
     // Get the played platforms
@@ -190,12 +257,19 @@ export default class Player extends BasePage {
 
     if (this.state.chartType === 'doughnut')
     {
-      statChart = <Doughnut data={ this.createDoughnutData(this.state.chartData) } legend={{ labels: { fontColor: "#ffffff" } }} options={{ tooltips: { callbacks: doughnutCallbacks } }} />;
+      statChart = <Doughnut data={ this.createDoughnutData(this.state.chartData) } legend={{ onClick: null, labels: { fontColor: "#ffffff" } }} options={{ tooltips: { callbacks: doughnutCallbacks } }} />;
     } else if (this.state.chartType === 'bar') {
-      statChart = <Bar data={ this.createBarData(this.state.chartData) } legend={{ display: false, fontColor: "#ffffff" }} options={{ scales: { xAxes: [{ ticks: { fontColor: "white" }, gridLines: { color: "#424242" } }], yAxes: [{ ticks: { beginAtZero: true, max: this.state.chartBarMax ? this.state.chartBarMax : 100, fontColor: "white" }, gridLines: { color: "#424242" } }] } }}/>;
+      statChart = <Bar data={ this.createBarData(this.state.chartData) } legend={{ onClick: null, display: false, fontColor: "#ffffff" }} options={{ scales: { xAxes: [{ ticks: { fontColor: "white" }, gridLines: { color: "#424242" } }], yAxes: [{ ticks: { beginAtZero: true, max: this.state.chartBarMax ? this.state.chartBarMax : 100, fontColor: "white" }, gridLines: { color: "#424242" } }] } }}/>;
     }
 
     var kdChartMax = Math.ceil(Math.max(this.props.stats.stats[this.state.seasonRange][this.state.platform].solo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].duo['kd'], this.props.stats.stats[this.state.seasonRange][this.state.platform].squad['kd']) / 10) * 10
+
+    if (this.props.user)
+    {
+      var player_shortcuts = this.props.user.shortcuts.map(({id}) => id)
+    } else {
+      var player_shortcuts = []
+    }
 
     return (
       <div style={{paddingLeft: "10px", paddingRight: "10px"}}>
@@ -224,18 +298,7 @@ export default class Player extends BasePage {
               value={this.state.seasonRange}
               onChange={evt => this.setState({seasonRange: evt.target.value})}
               label="Season Range"
-              options={[
-                {
-                  label: 'All Seasons',
-                  value: 'alltime',
-                  color: "black"
-                },
-                {
-                  label: 'Season 5',
-                  value: 'weekly',
-                  color: "black"
-                }
-              ]}
+              options={ seasonSelect }
             />
 
             <Select className="atomic-select atomic-platform-select"
@@ -246,6 +309,30 @@ export default class Player extends BasePage {
               style={{ minWidth: "140px" }}
               options={ platformSelect }
             />
+
+            {
+              this.props.user != undefined && this.props.user.player_id != this.props.stats.id && !player_shortcuts.includes(this.props.stats.id) ? (
+                <form action="/add-shortcut" method="POST">
+                  <input type="hidden" name="displayName" value={this.props.stats.displayName} />
+                  <input type="hidden" name="id" value={this.props.stats.id} />
+                  <input type="hidden" name="redirect" value={"/id/" + this.props.stats.id} />
+                  <Button
+                    raised
+                    className="atomic-player-left-aligned"
+                  >
+                    Add shortcut
+                  </Button>
+                </form>
+              ) : null
+            }
+
+            {/*<Button
+              onClick={() => Router.push('obs', {platform: 'pc', username: this.props.stats.displayName})}
+              raised
+              className="atomic-player-left-aligned"
+            >
+              Obs overlay
+            </Button>*/}
           </div>
 
           <hr className="atomic-divider" style={{ marginTop: "68px", marginBottom: "10px" }}/>
@@ -268,6 +355,94 @@ export default class Player extends BasePage {
           <AtomicModeStatsCard tops={['5', '12']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top5: "Top 5", top12: "Top 12", kpm: "Kills per Match", spm: "Score per Match" }} title="Duo" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].duo} color="#76ff03" />
           <AtomicModeStatsCard tops={['3', '6']} keys={{ score: "Score", wins: "Wins", kills: "Kills", kd: "K/D", winrate: "Win%", top3: "Top 3", top6: "Top 6", kpm: "Kills per Match", spm: "Score per Match" }} title="Squad" stats={this.props.stats.stats[this.state.seasonRange][this.state.platform].squad} color="#ff9100" />
         </div>
+
+        <AtomicCard className="atomic-player-match-history-card" title="Match History" titleSize="headline3" titleColor="#00e5ff" outlineColor="#00e5ff" backgroundColor="var(--drawer-color)" width="calc(100% - 8px)" maxWidth="1030px" style={{ paddingTop: "50px" }}>
+          {
+            !(this.state.platform in this.props.matches) ? (
+              <DataTable style={{ borderColor: "transparent" }}>
+                <DataTableContent style={{minWidth: "1000px"}}>
+                  <DataTableBody>
+                    <DataTableRow>
+                      <DataTableCell alignMiddle className="atomic-data-table-cell" style={{borderWidth: "0px"}}>No Match History</DataTableCell>
+                    </DataTableRow>
+                  </DataTableBody>
+                </DataTableContent>
+              </DataTable>
+            ) : (
+              <DataTable style={{ borderColor: "transparent" }}>
+                <DataTableContent style={{minWidth: "1000px"}}>
+                  <DataTableHead>
+                    <DataTableRow>
+                      <DataTableHeadCell alignMiddle className="atomic-data-table-head-cell">Mode</DataTableHeadCell>
+                      <DataTableHeadCell alignMiddle className="atomic-data-table-head-cell">Matches</DataTableHeadCell>
+                      <DataTableHeadCell alignMiddle className="atomic-data-table-head-cell">Wins</DataTableHeadCell>
+                      <DataTableHeadCell alignMiddle className="atomic-data-table-head-cell">Kills</DataTableHeadCell>
+                      <DataTableHeadCell alignMiddle className="atomic-data-table-head-cell">Score</DataTableHeadCell>
+                      <DataTableHeadCell alignMiddle className="atomic-data-table-head-cell">Date</DataTableHeadCell>
+                    </DataTableRow>
+                  </DataTableHead>
+                  <DataTableBody>
+                    {
+                      this.props.matches[this.state.platform]['matches'].slice(0, this.state.matchHistoryMax).map(({matches, wins, top, kills, score, mode, timestamp}, i) => {
+                        if (matches == 1)
+                        {
+                          var value = "", color = ""
+
+                          if (wins == 1)
+                          {
+                            value = "Win"
+                            color = "var(--mdc-theme-primary)"
+                          } else if (top != 0)
+                          {
+                            value = "Top " + top
+                            color = "#00e5ff"
+                          } else {
+                            value = "Defeat"
+                            color = "#ff1744"
+                          }
+
+                          return (
+                            <DataTableRow key={i}>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="mode" style={{ color: { 'solo': "#00b0ff", 'duo': "#76ff03", 'squad': "#ff9100" }[mode] }}>{mode.capitalize()}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="state" colSpan="2" style={{ color }}>{value}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="kills" style={{ color: "#ff1744" }}>{numberWithCommas(kills)}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="score" style={{ color: "#00e5ff" }}>{numberWithCommas(score)}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="date">{timeAgo.ago(new Date(timestamp))}</DataTableCell>
+                            </DataTableRow>
+                          )
+                        } else {
+                          return (
+                            <DataTableRow key={i}>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="mode" style={{ color: { 'solo': "#00b0ff", 'duo': "#76ff03", 'squad': "#ff9100" }[mode] }}>{mode.capitalize()}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="matches" style={{ color: "#ff3d00" }}>{numberWithCommas(matches)}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="wins" style={{ color: "var(--mdc-theme-primary)" }}>{numberWithCommas(wins)}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="kills" style={{ color: "#ff1744" }}>{numberWithCommas(kills)}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="score" style={{ color: "#00e5ff" }}>{numberWithCommas(score)}</DataTableCell>
+                              <DataTableCell alignMiddle className="atomic-data-table-cell" key="date">{timeAgo.ago(new Date(timestamp))}</DataTableCell>
+                            </DataTableRow>
+                          )
+                        }
+                      })
+                    }
+                    {
+                      this.props.matches[this.state.platform]['matches'].length > 5 && this.state.matchHistoryMax == 5 ? (
+                        <DataTableRow key="100">
+                          <DataTableCell alignMiddle className="atomic-data-table-cell" colSpan="6">
+                            <Button className="atomic-more-button" style={{ color: "#00e5ff" }} onClick={evt => this.setState({ matchHistoryMax: 100 })}>
+                              Show More
+                            </Button>
+                          </DataTableCell>
+                        </DataTableRow>
+                      ) : (
+                        null
+                      )
+                    }
+                  </DataTableBody>
+                </DataTableContent>
+              </DataTable>
+            )
+          }
+        </AtomicCard>
       </div>
     );
   }
@@ -287,7 +462,7 @@ class AtomicModeStatsCard extends Component {
     var top2 = 'Top ' + this.props.tops[1]
 
     var keys = {
-      'Top 100': { value: this.props.stats.matches - this.props.stats.wins - (this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins) - (this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins), color: '#f44336' }, 
+      'Top 100': { value: this.props.stats.matches - this.props.stats.wins - (this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins) - (this.props.stats['top' + this.props.tops[1]] - (this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins) - this.props.stats.wins), color: '#f44336' }, 
       'Wins': { value: this.props.stats.wins, color: "#2196f3" },
       [top1]: { value: this.props.stats['top' + this.props.tops[0]] - this.props.stats.wins, color: "#4caf50" },
       [top2]: { value: this.props.stats['top' + this.props.tops[1]] - this.props.stats['top' + this.props.tops[0]], color: "#ff9800" }
@@ -310,7 +485,7 @@ class AtomicModeStatsCard extends Component {
   render() {
     return (
       <AtomicCard className={ this.props.className ? this.props.className : "" + ' ' + "atomic-mode-stats-card" } title={this.props.title} subtitle={ numberWithCommas(this.props.stats.matches) + " Matches"} titleSize="headline4" titleColor={this.props.color} outlineColor={this.props.color} backgroundColor="var(--drawer-color)" width="350px" maxWidth="970px">
-        <Doughnut style={{ paddingBottom: "10px" }} data={ this.createData() } legend={{ labels: { fontColor: "#ffffff" } }} options={{ layout: { padding: { bottom: 10 } }, tooltips: { callbacks: doughnutCallbacks } }} />
+        <Doughnut style={{ paddingBottom: "10px" }} data={ this.createData() } legend={{ onClick: null, labels: { fontColor: "#ffffff" } }} options={{ layout: { padding: { bottom: 10 } }, tooltips: { callbacks: doughnutCallbacks } }} />
         <hr className="atomic-stat-divider" style={{ borderColor: this.props.color }} />
         <GridList>
           {
@@ -325,7 +500,7 @@ class AtomicModeStatsCard extends Component {
 class AtomicStatMiniTile extends Component {
   render() {
     var divider = this.props.noBorder ? (
-      ""
+      null
     ) : <hr className="atomic-stat-divider" style={{ borderColor: this.props.color }} />
 
     return (

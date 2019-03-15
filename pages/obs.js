@@ -1,15 +1,15 @@
 import fetch from 'node-fetch';
 
 import BasePage from '../components/base-page';
-import { Typography } from 'rmwc';
+import { Typography } from '@rmwc/typography';
 
 import AnimatedNumber from 'react-animated-number';
 
 export default class ObsOverlay extends BasePage {
     static async getInitialProps({ query }) {
-      var stats = undefined, displayName = undefined;
+      var stats = null, displayName = undefined;
       
-      await fetch(`https://atomic-api.herokuapp.com/player/${query.username}`)
+      await fetch(`http://35.177.120.249:5000/player/${query.username}`)
         .then(response => response.json())
         .then(json => {
           if ('error' in json) {
@@ -20,7 +20,7 @@ export default class ObsOverlay extends BasePage {
           }
         })
         .catch(ex => {
-          
+          console.log(ex)
         })
   
       return {displayName, username: query.username, platform: query.platform, startStats: stats, noLayout: true};

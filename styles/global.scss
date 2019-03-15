@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "Burbank";
+    src: url("/static/Burbank.ttf");
+};
+
+$mdc-typography-styles-headline3: (
+font-family: "Burbank"
+);
+
+$mdc-typography-styles-headline4: (
+font-family: "Burbank"
+);
+
+$mdc-typography-styles-headline5: (
+font-family: "Burbank"
+);
+
+$mdc-typography-font-family: 'Dosis';
+  
+@import "material-components-web/material-components-web.scss";
+
+.atomic-select {
+    @include mdc-select-container-fill-color(secondary);
+  
+    float: left;
+}
+
+.atomic-select option {
+    color: black;
+}
+
+.atomic-select .mdc-select__native-control {
+    // Remove the html arrow of the select in Firefox
+    -moz-appearance: none !important;
+    // Remove the html arrow of the select in Chrome
+    -webkit-appearance: none !important;
+
+    color: white !important;
+}
+
+// Remove the html arrow of the select in IE
+.atomic-select .mdc-select__native-control::-ms-expand {
+    display: none;
+
+    color: white !important;
+}
+
+.atomic-data-table-head-cell {
+    @include mdc-typography(headline1);
+  
+    font-family: "Burbank";
+    font-size: 20px !important;
+    background-color: var(--mdc-theme-secondary) !important;
+    color: rgb(189, 189, 189) !important;
+    border-width: 0px !important;
+  }
+  
+  .atomic-data-table-cell {
+    @include mdc-typography(subtitle2);
+  
+    font-family: "Burbank";
+    font-size: 25px;
+    background-color: var(--drawer-color) !important;
+    color: white;
+    border-color: var(--divider-color) !important;
+    border-width: 1px !important;
+    padding-top: 15px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .atomic-divider {
+    border-color: var(--divider-color);
+  }
+
+  .atomic-white-ripple::before, .atomic-white-ripple::after {
+    background-color: white !important;
+  }

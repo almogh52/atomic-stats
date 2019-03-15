@@ -6,11 +6,8 @@ const session = require('express-session')
 const pg = require('pg')
 const pgSession = require('connect-pg-simple')(session)
 const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
+const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 const fetch = require('node-fetch')
-const constants = require("./constants")
-const FormData = require('form-data')
-const bcrypt = require('bcrypt')
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const server = express()
@@ -24,24 +21,39 @@ const db = new pg.Pool({
   port: 5432
 });
 
-// configure passport.js to use the local strategy
-passport.use(new LocalStrategy((username, password, done) => {
-    db.query("SELECT id, username, password, email FROM users WHERE username = $1", [username.toLocaleLowerCase()])
+passport.use(new GoogleStrategy({
+    clientID:     "819763797090-0cbbbdp8qj8c3uh8i0jnfih90pkvqa8r.apps.googleusercontent.com",
+    clientSecret: "9fdqH4z0Qaw4BLR_SWV4_GWa",
+    callbackURL: "http://localhost:3000/auth/google/callback",
+    passReqToCallback   : true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    db.query("SELECT * FROM users WHERE user_profile_id = $1", [profile.id])
       .then(res => {
         user = res.rows[0]
 
-        if (!user) return done(null, false, info="Invalid credentials");
+        if (user)
+        {
+          delete user.user_profile_id
 
-        bcrypt.compare(password, user.password)
-          .then(res => { 
-            if (!res) return done(null, false, info="Invalid credentials")
+          return done(null, user);
+        }
 
-            // Remove password from user info
-            delete user.password;
-            
+        var user_id = uuid()
+
+        db.query("INSERT INTO users VALUES($1, $2, $3, $4)", [user_id, profile.id, null, []])
+          .then(res => {
+            user = {
+              id: user_id,
+              player_id: undefined,
+              shortcuts: []
+            }
+
             return done(null, user);
           })
-          .catch((ex) => { return done(ex) })
+          .catch((ex) => {
+            return done(ex)
+          })
       })
       .catch((ex) => {
         return done(ex)
@@ -56,9 +68,12 @@ passport.serializeUser((user, done) => {
 
 // tell passport how to deserialize the user from it's id
 passport.deserializeUser((id, done) => {
-  db.query("SELECT id, username, email FROM users WHERE id = $1", [id])
+  db.query("SELECT * FROM users WHERE id = $1", [id])
     .then(res => {
       user = res.rows[0]
+
+      // Remove profile id from user info
+      delete user.user_profile_id
 
       return done(null, user);
     })
@@ -92,136 +107,79 @@ app.prepare()
     server.use(passport.initialize());
     server.use(passport.session());
 
-    server.post("/login", (req, res, next) => {
-      // If the user is already signed up, return him to home
-      if (req.isAuthenticated())
-      {
-        return res.redirect("/refresh-auth")
-      }
-      
-      passport.authenticate('local', (err, user, info) => {
-        if (info) return res.redirect(`/login?username=${req.body.username}&message=${info}`)
-        if (err) return res.redirect(`/login?username=${req.body.username}&message=An internal error occurred, please try again later!`);
+    server.get('/auth/google',
+      passport.authenticate('google', { scope:
+        [ 'https://www.googleapis.com/auth/plus.login',
+          'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
+    ));
 
-        req.login(user, (err) => {
-          if (err) return res.redirect(`/login?username=${req.body.username}&message=An internal error occurred, please try again later!`);
+    server.get( '/auth/google/callback',
+      passport.authenticate( 'google', {
+        successRedirect: '/auth/refresh/?snackbar=Login successful!',
+        failureRedirect: '/?snackbar=Login failed! Please try again later!'
+    }));
 
-          return res.redirect('/refresh-auth');
-        })
-      })(req, res, next)
-    });
-
-    server.get("/refresh-auth", (req, res) => {
-      return res.redirect('/');
+    server.get("/auth/refresh", (req, res) => {
+      if (req.query.snackbar)
+        return res.redirect('/?snackbar=' + req.query.snackbar);
+      else
+        return res.redirect('/');
     })
 
-    server.post("/register", (req, res, next) => {
-      // If the user is already signed up, return him to home
-      if (req.isAuthenticated())
-      {
-        return res.redirect("/refresh-auth")
-      }
+    server.post("/post-register", (req, res) => {
+      if (!req.isAuthenticated || !req.user || req.body.ign == "")
+        return res.redirect(`/post-register?ign=${req.body.ign}&message=Invalid parameters sent!`)
 
-      function validateUsername(username) {
-        var re = /^[a-z0-9_-]{3,15}$/
-        return re.test(username)
-      }
+      // Try get the stats of the player to check if it exists
+      fetch(`http://localhost:5000/player/${req.body.ign}`)
+        .then(response => response.json())
+        .then(json => {
+          if ('error' in json)
+            return res.redirect(`/post-register?ign=${req.body.ign}&message=Player not found!`)
 
-      function validateEmail(email) {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-      }
-
-      function validatePassword(password) {
-        var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-        var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
-
-        return strongRegex.test(password) || mediumRegex.test(password);
-      }
-
-      // If no captcha entered, send error
-      if (!req.body['g-recaptcha-response'] || req.body['g-recaptcha-response'] == "")
-      {
-        // Redirect back with error
-        return res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=Recaptcha wasn't entered!`);
-      } else if (!req.body.username || !validateUsername(req.body.username)) {
-        // Redirect back with error
-        return res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=Invalid username entered!`);
-      } else if (!req.body.email || !validateEmail(req.body.email)) {
-        // Redirect back with error
-        return res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=Invalid e-mail entered!`);
-      } else if (!req.body.password || !validatePassword(req.body.password)) {
-        // Redirect back with error
-        return res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=Week password was entered!`);
-      } else if (!req.body.passwordConfirm || req.body.password != req.body.passwordConfirm) {
-        // Redirect back with error
-        return res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=Password doesn't match the password confirm!`);
-      }
-
-      db.query("SELECT EXISTS(SELECT FROM users WHERE username = $1)", [req.body.username.toLocaleLowerCase()])
-        .then(res1 => {
-          if (res1.rows[0].exists == true) { // If a user with this username exists
-            res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=Username is already in use!`);
-          } else {
-            db.query("SELECT EXISTS(SELECT FROM users WHERE email = $1)", [req.body.email.toLocaleLowerCase()])
-              .then(res2 => {
-                if (res2.rows[0].exists == true) // If a user with this email exists 
-                {
-                  res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=The email you provided is already associated with another account!`);
-                } else {
-                  const recaptchaVerifyPayload = new FormData()
-                  recaptchaVerifyPayload.append("secret", constants.GOOGLE_RECAPTCHA_SITE_SECRET)
-                  recaptchaVerifyPayload.append("response", req.body['g-recaptcha-response'])
-
-                  // Verify recpatcha
-                  fetch(constants.GOOGLE_RECAPTCHA_VERIFY, {
-                    method: "POST",
-                    body: recaptchaVerifyPayload
-                  })
-                    .then(resp => resp.json())
-                    .then(resp => {
-                      if (resp.success == true) // If recaptcha verification succeed
-                      {
-                        bcrypt.hash(req.body.password, 10)
-                          .then(hash => {
-                            db.query("INSERT INTO users(id, username, email, password) VALUES($1, $2, $3, $4)", [
-                              uuid(), 
-                              req.body.username.toLocaleLowerCase(),
-                              req.body.email.toLocaleLowerCase(),
-                              hash
-                            ])
-                              .then(() => {
-                                passport.authenticate('local', (err, user, info) => {
-                                  if (info || err) return res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=An internal error occurred, please try again later!`)
-                          
-                                  req.login(user, (err) => {
-                                    if (err) return res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=An internal error occurred, please try again later!`)
-                                    
-                                    return res.redirect('/refresh-auth');
-                                  })
-                                })(req, res, next)
-                            })
-                              .catch(() => res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=An internal error occurred, please try again later!`))
-                          })
-                          .catch(() => res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=An internal error occurred, please try again later!`))
-                      } else {
-                        // Redirect back with error
-                        res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=Recaptcha verification failed!`);
-                      }
-                    })
-                    .catch(() => res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=An internal error occurred, please try again later!`))
-                }
-              })
-              .catch(() => res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=An internal error occurred, please try again later!`))
-          }
+          db.query("UPDATE users SET player_id = $1 WHERE id = $2", [json.id, req.user.id])
+            .then(() => res.redirect("/?snackbar=Registration completed, Welcome to Atomic Stats!"))
+            .catch(() => res.redirect(`/post-register?ign=${req.body.ign}&message=An internal error occurred, please try again later!`))
         })
-        .catch(() => res.redirect(`/register?username=${req.body.username}&email=${req.body.email}&message=An internal error occurred, please try again later!`))
+        .catch(ex => {
+          return res.redirect(`/post-register?ign=${req.body.ign}&message=Player not found!`)
+        })
+    })
+
+    server.post("/add-shortcut", (req, res) => {
+      // If invalid parameters sent, return to page
+      if (!req.isAuthenticated || !req.user || req.body.id == "" || req.body.displayName == "")
+        return res.redirect(req.body.redirect == undefined ? "/" : req.body.redirect)
+        
+      // Check if already exists
+      shortcuts_ids = req.user.shortcuts.map(({id}) => id)
+      if (shortcuts_ids.includes(req.body.id) || req.user.player_id == req.body.id)
+        return res.redirect(req.body.redirect == undefined ? "/" : req.body.redirect)
+
+      req.user.shortcuts.push({
+        displayName: req.body.displayName,
+        id: req.body.id
+      })
+
+      db.query("UPDATE users SET shortcuts = $1 WHERE id = $2", [req.user.shortcuts, req.user.id])
+        .then(() => res.redirect(req.body.redirect == undefined ? "/" : req.body.redirect))
+        .catch(() => res.redirect(req.body.redirect == undefined ? "/" : req.body.redirect))
+    })
+
+    server.post('/auth/logout', function(req, res){
+      req.logout();
+      res.redirect('/auth/refresh');
     });
 
-    server.post('/logout', function(req, res){
-      req.logout();
-      res.redirect('/refresh-auth');
-    });
+    server.use(function(req, res, next) {
+      // If the user is logged in but is missing ign it means he need to finish registeration
+      if (req.isAuthenticated && req.user && !req.user['player_id'] && !req.url.includes("/post-register") && !req.url.includes("_next") && !req.url.includes("static"))
+      {
+        return res.redirect("/post-register")
+      } else {
+        next();
+      }
+    })
 
     server.get('*', (req, res) => {
       handle(req, res)

@@ -8215,19 +8215,19 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************************************!*\
   !*** multi ./node_modules/next/dist/pages/_error.js ***!
   \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/almog/Desktop/atomic-stats 3/node_modules/next/dist/pages/_error.js */"./node_modules/next/dist/pages/_error.js");
+module.exports = __webpack_require__(/*! /Users/almog/Desktop/atomic-stats/node_modules/next/dist/pages/_error.js */"./node_modules/next/dist/pages/_error.js");
 
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]])
+},[[5,"static/runtime/webpack.js"]]])
             return { page: comp.default }
           })
         ;

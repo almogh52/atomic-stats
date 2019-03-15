@@ -1,4 +1,4 @@
-import Page from '../components/page.js'
+import Page from '../components/page.js' // Keep this, it's loading the material components css
 
 import { Component } from 'react';
 

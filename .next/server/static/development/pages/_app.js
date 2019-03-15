@@ -106,6 +106,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! nprogress */ "nprogress");
 /* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nprogress__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -130,6 +132,8 @@ function () {
     value: function pushRoute(name) {
       var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var options = arguments.length > 2 ? arguments[2] : undefined;
+      // If the player is trying to route to another location while entering his player id, ignore requests
+      if ((typeof window === "undefined" ? "undefined" : _typeof(window)) !== undefined && window["__ATOMIC_USER__"] && window["__ATOMIC_USER__"].player_id == undefined) return;
       nprogress__WEBPACK_IMPORTED_MODULE_1___default.a.start();
       _routes__WEBPACK_IMPORTED_MODULE_0___default.a.pushRoute(name, params = params, options);
     }
@@ -153,26 +157,28 @@ function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rmwc/TopAppBar */ "rmwc/TopAppBar");
-/* harmony import */ var rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var rmwc_TextField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rmwc/TextField */ "rmwc/TextField");
-/* harmony import */ var rmwc_TextField__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(rmwc_TextField__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rmwc/Drawer */ "rmwc/Drawer");
-/* harmony import */ var rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var rmwc_List__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rmwc/List */ "rmwc/List");
-/* harmony import */ var rmwc_List__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(rmwc_List__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var rmwc_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rmwc/Button */ "rmwc/Button");
-/* harmony import */ var rmwc_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var rmwc_Menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rmwc/Menu */ "rmwc/Menu");
-/* harmony import */ var rmwc_Menu__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rmwc_Menu__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @rmwc/top-app-bar */ "@rmwc/top-app-bar");
+/* harmony import */ var _rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _rmwc_textfield__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @rmwc/textfield */ "@rmwc/textfield");
+/* harmony import */ var _rmwc_textfield__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_rmwc_textfield__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _rmwc_drawer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @rmwc/drawer */ "@rmwc/drawer");
+/* harmony import */ var _rmwc_drawer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_rmwc_drawer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _rmwc_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @rmwc/list */ "@rmwc/list");
+/* harmony import */ var _rmwc_list__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _rmwc_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @rmwc/button */ "@rmwc/button");
+/* harmony import */ var _rmwc_button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_rmwc_button__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _rmwc_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @rmwc/menu */ "@rmwc/menu");
+/* harmony import */ var _rmwc_menu__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_rmwc_menu__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/page.scss */ "./styles/page.scss");
 /* harmony import */ var _styles_page_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_page_scss__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _atomic_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./atomic-router */ "./components/atomic-router.js");
 /* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! material-components-web/dist/material-components-web.min.css */ "./node_modules/material-components-web/dist/material-components-web.min.css");
 /* harmony import */ var material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(material_components_web_dist_material_components_web_min_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var rmwc_Typography__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rmwc/Typography */ "rmwc/Typography");
-/* harmony import */ var rmwc_Typography__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(rmwc_Typography__WEBPACK_IMPORTED_MODULE_10__);
-var _jsxFileName = "/Users/almog/Desktop/atomic-stats 3/components/page.js";
+/* harmony import */ var _rmwc_typography__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @rmwc/typography */ "@rmwc/typography");
+/* harmony import */ var _rmwc_typography__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_rmwc_typography__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__);
+var _jsxFileName = "/Users/almog/Desktop/atomic-stats/components/page.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -187,6 +193,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -223,6 +230,11 @@ function (_Component) {
   }
 
   _createClass(Page, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      window.scrollTo(0, 0);
+    }
+  }, {
     key: "menuBtnPressed",
     value: function menuBtnPressed() {
       // Set the state of the drawer, if it is closed or it's undefined, open it
@@ -269,61 +281,66 @@ function (_Component) {
       var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "App",
+        className: "atomic-app",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
+          lineNumber: 88
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83
+          lineNumber: 89
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBar"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__["TopAppBar"], {
+        prominent: true,
         theme: "primary",
         fixed: true,
         className: "atomic-app-bar",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarRow"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 85
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarSection"], {
-        alignStart: true,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 86
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarNavigationIcon"], {
-        theme: "primary",
-        use: "menu",
-        onClick: this.menuBtnPressed,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 87
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarTitle"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 88
-        }
-      }, "Atomic Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarSection"], {
-        alignEnd: true,
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 90
         }
-      }, this.props.user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Menu__WEBPACK_IMPORTED_MODULE_6__["MenuAnchor"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarRow"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 91
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarSection"], {
+        alignStart: true,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 92
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
-        className: "atomic-auth-button",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarNavigationIcon"], {
+        theme: "primary",
+        icon: "menu",
+        style: {
+          margin: "auto 0"
+        },
+        onClick: this.menuBtnPressed,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 93
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/static/idk.png",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 94
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarSection"], {
+        alignEnd: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 96
+        }
+      }, this.props.user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_menu__WEBPACK_IMPORTED_MODULE_6__["MenuSurfaceAnchor"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 98
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+        className: "atomic-white-ripple atomic-auth-button",
         onClick: function onClick(evt) {
           return _this2.setState({
             'authMenu': !_this2.state.authMenu
@@ -331,22 +348,35 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 99
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["ButtonIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_button__WEBPACK_IMPORTED_MODULE_5__["ButtonIcon"], {
+        style: {
+          display: "flex"
+        },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            fontSize: "19px"
+          },
+          icon: "user",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 100
+          }
+        }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94
+          lineNumber: 100
         }
-      }, "person"), this.props.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }), "My Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "atomic-logout-form",
-        action: "/logout",
+        action: "/auth/logout",
         method: "POST",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 104
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Menu__WEBPACK_IMPORTED_MODULE_6__["Menu"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_menu__WEBPACK_IMPORTED_MODULE_6__["Menu"], {
         className: "atomic-menu atomic-auth-menu",
         open: this.state.authMenu,
         onClose: function onClose(evt) {
@@ -356,60 +386,75 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 105
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Menu__WEBPACK_IMPORTED_MODULE_6__["MenuItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_menu__WEBPACK_IMPORTED_MODULE_6__["MenuItem"], {
         onClick: function onClick() {
           document.getElementById("atomic-logout-form").submit();
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104
+          lineNumber: 110
         }
-      }, "Logout"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "atomic-auth-buttons",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 111
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
-        className: "atomic-auth-button",
-        onClick: function onClick() {
-          return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute("login");
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 112
-        }
-      }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
-        use: "button",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
         style: {
-          color: "white",
-          position: "relative",
-          top: "2px",
-          display: "inline-block",
-          padding: "10px"
+          display: "flex"
         },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            color: "white",
+            fontSize: "19px"
+          },
+          icon: "sign-out-alt",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 113
+          }
+        }),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 113
         }
-      }, "or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+      }), "Logout"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "atomic-auth-buttons",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 119
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
         className: "atomic-auth-button",
         onClick: function onClick() {
-          return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute("register");
+          return window.location = "/auth/google";
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 114
+          lineNumber: 120
         }
-      }, "Register")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_button__WEBPACK_IMPORTED_MODULE_5__["ButtonIcon"], {
+        style: {
+          display: "flex"
+        },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            fontSize: "19px"
+          },
+          icon: "sign-in-alt",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 121
+          }
+        }),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 121
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["Drawer"], {
-        persistent: true,
+      }), "Login with google")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 130
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_drawer__WEBPACK_IMPORTED_MODULE_3__["Drawer"], {
+        dismissible: true,
         className: "atomic-drawer",
         open: this.state.persistentOpen,
         style: {
@@ -417,91 +462,342 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 122
+          lineNumber: 131
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["DrawerToolbarSpacer"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 123
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Drawer__WEBPACK_IMPORTED_MODULE_3__["DrawerContent"], {
-        className: "atomic-drawer-content",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 124
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 125
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 126
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 127
-        }
-      }, "Friends")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 129
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 130
-        }
-      }, "My Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          height: "160px"
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 132
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_drawer__WEBPACK_IMPORTED_MODULE_3__["DrawerContent"], {
+        className: "atomic-drawer-content",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 133
         }
-      }, "My Profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListDivider"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 134
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        onClick: function onClick() {
+          return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute('index');
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 135
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
+        style: {
+          display: "flex"
+        },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            fontSize: "19px"
+          },
+          icon: "home",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 136
+          }
+        }),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 136
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 137
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
-        onClick: function onClick() {
-          return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute('news');
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 138
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+      }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListDivider"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 139
         }
-      }, "News")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+      })), this.props.user && this.props.user['player_id'] ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 143
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        onClick: function onClick() {
+          return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute('id', {
+            id: _this2.props.user['player_id']
+          });
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 144
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
+        style: {
+          display: "flex"
+        },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            fontSize: "19px"
+          },
+          icon: "chart-pie",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 145
+          }
+        }),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 145
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 146
+        }
+      }, "My Stats")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListDivider"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 148
+        }
+      })) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 152
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        onClick: function onClick() {
+          return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute('leaderboard');
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 153
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
+        style: {
+          display: "flex"
+        },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            fontSize: "19px"
+          },
+          icon: "award",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 154
+          }
+        }),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 154
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 155
+        }
+      }, "Leaderboard")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
         onClick: function onClick() {
           return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute('shop');
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 157
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_List__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
+        style: {
+          display: "flex"
+        },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            fontSize: "19px"
+          },
+          icon: "shopping-cart",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 158
+          }
+        }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 158
         }
-      }, "Shop")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TopAppBar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarFixedAdjust"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 159
+        }
+      }, "Item Shop")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+        onClick: function onClick() {
+          return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute('news');
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 161
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
+        style: {
+          display: "flex"
+        },
+        icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+          style: {
+            fontSize: "19px"
+          },
+          icon: "newspaper",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 162
+          }
+        }),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 162
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 163
+        }
+      }, "News"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListDivider"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 166
+        }
+      }), this.props.user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 169
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListGroupSubheader"], {
+        className: "atomic-drawer-subheader",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 170
+        }
+      }, "Shortcuts"), this.props.user.shortcuts.map(function (_ref, i) {
+        var displayName = _ref.displayName,
+            id = _ref.id;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+          key: i,
+          onClick: function onClick() {
+            return _atomic_router__WEBPACK_IMPORTED_MODULE_8__["default"].pushRoute('id', {
+              id: id
+            });
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 173
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
+          style: {
+            display: "flex"
+          },
+          icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+            style: {
+              fontSize: "19px"
+            },
+            icon: "user",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 174
+            }
+          }),
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 174
+          }
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 175
+          }
+        }, displayName));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_menu__WEBPACK_IMPORTED_MODULE_6__["SimpleMenuSurface"], {
+        className: "atomic-menu",
+        handle: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 183
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemGraphic"], {
+          style: {
+            display: "flex"
+          },
+          icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+            style: {
+              fontSize: "19px"
+            },
+            icon: "plus",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 184
+            }
+          }),
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 184
+          }
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_list__WEBPACK_IMPORTED_MODULE_4__["ListItemText"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 185
+          }
+        }, "Add shortcut")),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 180
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          padding: '1rem',
+          width: '12rem'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 189
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_typography__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
+        style: {
+          color: "white"
+        },
+        use: "body1",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 190
+        }
+      }, "Three easy steps to add a shortcut:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 192
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 192
+        }
+      }), "\u2022 Search for your wanted shortcut player in the search", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 194
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 194
+        }
+      }), "\u2022 Click the \"Add shortcut\" button under the player's name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 196
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 196
+        }
+      }), "\u2022 The new shortcut will appear here! \uD83D\uDE00")))) : null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_top_app_bar__WEBPACK_IMPORTED_MODULE_1__["TopAppBarFixedAdjust"], {
         className: "atomic-content-wrapper",
         style: {
           display: "flex",
@@ -509,15 +805,15 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148
+          lineNumber: 207
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "atomic-search-wrapper",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 149
+          lineNumber: 208
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_TextField__WEBPACK_IMPORTED_MODULE_2__["TextField"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_textfield__WEBPACK_IMPORTED_MODULE_2__["TextField"], {
         box: true,
         onKeyPress: function onKeyPress(e) {
           return e.key == "Enter" ? _this2.searchPlayer() : null;
@@ -529,9 +825,9 @@ function (_Component) {
         label: "Epic Games Username",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 150
+          lineNumber: 209
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_button__WEBPACK_IMPORTED_MODULE_5__["Button"], {
         raised: true,
         accent: true,
         theme: "secondary",
@@ -539,21 +835,22 @@ function (_Component) {
         onClick: this.searchPlayer,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151
+          lineNumber: 210
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Button__WEBPACK_IMPORTED_MODULE_5__["ButtonIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_button__WEBPACK_IMPORTED_MODULE_5__["ButtonIcon"], {
+        icon: "search",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 152
+          lineNumber: 211
         }
-      }, "search"), "Search")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), "Search")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "atomic-content",
         style: {
           overflow: "hidden"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 156
+          lineNumber: 215
         }
       }, this.props.children), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
@@ -563,7 +860,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 159
+          lineNumber: 218
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "atomic-footer",
@@ -579,9 +876,9 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 160
+          lineNumber: 219
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_typography__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
         use: "body2",
         style: {
           flexDirection: "row",
@@ -590,9 +887,9 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 161
+          lineNumber: 220
         }
-      }, "\xA9 2018 Atomic Stats"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rmwc_Typography__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
+      }, "\xA9 2018 Atomic Stats"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rmwc_typography__WEBPACK_IMPORTED_MODULE_10__["Typography"], {
         use: "caption",
         style: {
           flexDirection: "row",
@@ -600,141 +897,14 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 162
+          lineNumber: 221
         }
-      }, "This site is not affiliated with Epic Games.")))));
+      }, "Fortnite is a registered trademark of Epic Games.")))));
     }
   }]);
 
   return Page;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-/*class AtomicIconRadioButton extends Component {
-  constructor(props) {
-    super(props);
-
-    // Set toggled as false
-    this.state = {toggled: this.props.selected === undefined ? false : this.props.selected};
-
-    // Create a ref to the element and bind the function
-    this.toggleElement = React.createRef();
-    this.select = this.select.bind(this);
-    this.deselect = this.deselect.bind(this);
-  }
-
-  select() {
-    // If the button isn't toggled, toggle it
-    if (this.state.toggled === false)
-    {
-      this.setState({toggled: true});
-      ReactDOM.findDOMNode(this.toggleElement.current).style.color = this.props.selectedColor;
-
-      // Call the group handler to handle the other radio buttons with the index of the button
-      this.props.groupHandler(this.props.index);
-    }
-  }
-
-  deselect() {
-    this.setState({toggled: false});
-    ReactDOM.findDOMNode(this.toggleElement.current).style.color = this.props.clearColor;
-  }
-
-  render() {
-    return (
-      <IconToggle ref={this.toggleElement}
-        className="atomic-icon-radio-button"
-        style={{color: this.state.toggled ? this.props.selectedColor : this.props.clearColor}}
-        data-icon-inner-selector={this.props.iconSelector}
-        on={{cssClass: this.props.icon}}
-        off={{cssClass: this.props.icon}}
-        onChange={this.select}>
-        <i className={this.props.iconClass} />
-      </IconToggle>
-    )
-  }
-}
-
-class AtomicIconRadioGroup extends Component {
-  constructor(props) {
-    super(props);
-
-    // Bind 'this' to the function
-    this.buttonToggled = this.buttonToggled.bind(this);
-    this.getSelectedValue = this.getSelectedValue.bind(this);
-
-    // Set the current option to not selected
-    this.state = {
-      currentOption: -1
-    }
-
-    // Create array of refs to hold the buttons
-    this.buttonRefs = []
-    for (var i = 0; i < this.props.info.length; i++)
-    {
-      this.buttonRefs[i] = React.createRef();
-    }
-
-    // If a selected index has been sent, toggle the button
-    if (this.props.selectedIndex !== undefined) {
-      // Set the current option to not selected
-      this.state = {
-        currentOption: this.props.selectedIndex
-      }
-    }
-  }
-
-  buttonToggled(index) {
-    // If the current option isn't not selected, deselect the current option
-    if (this.state.currentOption !== -1)
-    {
-      // Deselect the current button
-      this.buttonRefs[this.state.currentOption].current.deselect();
-    }
-
-    // Set the new selected button index
-    this.setState({currentOption: index});
-  }
-
-  getSelectedValue() {
-    if (this.state.currentOption !== -1)
-    {
-      return this.props.info[this.state.currentOption].value;
-    } else {
-      return "None";
-    }
-  }
-
-  render() {
-    var buttons = []
-
-    // Go through the buttons info that were given as a prop, for each one create a button
-    for (var i = 0; i < this.props.info.length; i++)
-    {
-      // Create the button
-      const iconRadioBtn = <AtomicIconRadioButton
-                            ref={this.buttonRefs[i]}
-                            key={i}
-                            selected={this.state.currentOption === i}
-                            clearColor={this.props.clearColor}
-                            selectedColor={this.props.selectedColor}
-                            iconSelector={this.props.info[i].iconSelector}
-                            icon={this.props.info[i].icon}
-                            iconClass={this.props.info[i].iconClass}
-                            index={i}
-                            groupHandler={this.buttonToggled}
-                          />
-
-      // Add the button to the list of buttons
-      buttons.push(iconRadioBtn)
-    }
-
-    return(
-      <div className={this.props.className + ' ' + "atomic-icon-radio-group"}>
-        {buttons}
-      </div>
-    )
-  }
-}*/
-
 
 /* harmony default export */ __webpack_exports__["default"] = (Page);
 
@@ -768,8 +938,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/page */ "./components/page.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! chart.js */ "chart.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _styles_global_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles/global.scss */ "./styles/global.scss");
+/* harmony import */ var _styles_global_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_global_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "@fortawesome/fontawesome-svg-core");
+/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__);
 
-var _jsxFileName = "/Users/almog/Desktop/atomic-stats 3/pages/_app.js";
+var _jsxFileName = "/Users/almog/Desktop/atomic-stats/pages/_app.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -792,6 +970,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
+
+
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faShoppingCart"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faNewspaper"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUser"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUsers"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faHome"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faChartPie"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faSignOutAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faSignInAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faAward"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faPlus"]);
+chart_js__WEBPACK_IMPORTED_MODULE_4___default.a.defaults.global.defaultFontFamily = "Dosis";
+var isServer = typeof window === 'undefined';
 
 var AtomicApp =
 /*#__PURE__*/
@@ -824,22 +1009,24 @@ function (_App) {
                 pageProps = _context.sent;
 
               case 6:
-                if (!(ctx.req && ctx.req.user)) {
-                  _context.next = 10;
+                if (isServer) {
+                  _context.next = 11;
                   break;
                 }
 
+                if (!window["__ATOMIC_USER__"] && ctx.req) window["__ATOMIC_USER__"] = ctx.req.user;
+                return _context.abrupt("return", {
+                  pageProps: pageProps,
+                  user: window["__ATOMIC_USER__"]
+                });
+
+              case 11:
                 return _context.abrupt("return", {
                   pageProps: pageProps,
                   user: ctx.req.user
                 });
 
-              case 10:
-                return _context.abrupt("return", {
-                  pageProps: pageProps
-                });
-
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -862,6 +1049,7 @@ function (_App) {
     _this.state = {};
 
     if (_this.props && _this.props.user) {
+      if (!isServer) window['__ATOMIC_USER__'] = _this.props.user;
       _this.state = {
         user: _this.props.user
       };
@@ -881,14 +1069,14 @@ function (_App) {
         return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_1__["Container"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 42
+            lineNumber: 61
           }
         }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, _extends({
           user: this.state.user
         }, pageProps, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 43
+            lineNumber: 62
           }
         })));
       }
@@ -896,20 +1084,20 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_1__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 68
         }
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_page__WEBPACK_IMPORTED_MODULE_3__["default"], {
         user: this.state.user,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 69
         }
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, _extends({
         user: this.state.user
       }, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 70
         }
       }))));
     }
@@ -931,12 +1119,18 @@ function (_App) {
 
 var Router = __webpack_require__(/*! nextjs-dynamic-routes */ "nextjs-dynamic-routes");
 
-var NProgress = __webpack_require__(/*! nprogress */ "nprogress");
-
 var router = module.exports = new Router();
+router.add({
+  name: 'index',
+  pattern: '/'
+});
 router.add({
   name: 'player',
   pattern: '/player/:username/'
+});
+router.add({
+  name: 'id',
+  pattern: '/id/:id/'
 });
 router.add({
   name: 'news',
@@ -958,6 +1152,25 @@ router.add({
   name: 'obs',
   pattern: '/obs/:platform/:username/'
 });
+router.add({
+  name: 'post-register',
+  pattern: '/post-register'
+});
+router.add({
+  name: 'leaderboard',
+  pattern: '/leaderboard'
+});
+
+/***/ }),
+
+/***/ "./styles/global.scss":
+/*!****************************!*\
+  !*** ./styles/global.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 
@@ -992,6 +1205,127 @@ module.exports = __webpack_require__(/*! ./pages/_app.js */"./pages/_app.js");
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/regenerator");
+
+/***/ }),
+
+/***/ "@fortawesome/fontawesome-svg-core":
+/*!****************************************************!*\
+  !*** external "@fortawesome/fontawesome-svg-core" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@fortawesome/fontawesome-svg-core");
+
+/***/ }),
+
+/***/ "@fortawesome/free-solid-svg-icons":
+/*!****************************************************!*\
+  !*** external "@fortawesome/free-solid-svg-icons" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@fortawesome/free-solid-svg-icons");
+
+/***/ }),
+
+/***/ "@fortawesome/react-fontawesome":
+/*!*************************************************!*\
+  !*** external "@fortawesome/react-fontawesome" ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@fortawesome/react-fontawesome");
+
+/***/ }),
+
+/***/ "@rmwc/button":
+/*!*******************************!*\
+  !*** external "@rmwc/button" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@rmwc/button");
+
+/***/ }),
+
+/***/ "@rmwc/drawer":
+/*!*******************************!*\
+  !*** external "@rmwc/drawer" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@rmwc/drawer");
+
+/***/ }),
+
+/***/ "@rmwc/list":
+/*!*****************************!*\
+  !*** external "@rmwc/list" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@rmwc/list");
+
+/***/ }),
+
+/***/ "@rmwc/menu":
+/*!*****************************!*\
+  !*** external "@rmwc/menu" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@rmwc/menu");
+
+/***/ }),
+
+/***/ "@rmwc/textfield":
+/*!**********************************!*\
+  !*** external "@rmwc/textfield" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@rmwc/textfield");
+
+/***/ }),
+
+/***/ "@rmwc/top-app-bar":
+/*!************************************!*\
+  !*** external "@rmwc/top-app-bar" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@rmwc/top-app-bar");
+
+/***/ }),
+
+/***/ "@rmwc/typography":
+/*!***********************************!*\
+  !*** external "@rmwc/typography" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@rmwc/typography");
+
+/***/ }),
+
+/***/ "chart.js":
+/*!***************************!*\
+  !*** external "chart.js" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("chart.js");
 
 /***/ }),
 
@@ -1036,83 +1370,6 @@ module.exports = require("nprogress");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ "rmwc/Button":
-/*!******************************!*\
-  !*** external "rmwc/Button" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rmwc/Button");
-
-/***/ }),
-
-/***/ "rmwc/Drawer":
-/*!******************************!*\
-  !*** external "rmwc/Drawer" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rmwc/Drawer");
-
-/***/ }),
-
-/***/ "rmwc/List":
-/*!****************************!*\
-  !*** external "rmwc/List" ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rmwc/List");
-
-/***/ }),
-
-/***/ "rmwc/Menu":
-/*!****************************!*\
-  !*** external "rmwc/Menu" ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rmwc/Menu");
-
-/***/ }),
-
-/***/ "rmwc/TextField":
-/*!*********************************!*\
-  !*** external "rmwc/TextField" ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rmwc/TextField");
-
-/***/ }),
-
-/***/ "rmwc/TopAppBar":
-/*!*********************************!*\
-  !*** external "rmwc/TopAppBar" ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rmwc/TopAppBar");
-
-/***/ }),
-
-/***/ "rmwc/Typography":
-/*!**********************************!*\
-  !*** external "rmwc/Typography" ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("rmwc/Typography");
 
 /***/ })
 

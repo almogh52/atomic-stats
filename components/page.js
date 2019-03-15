@@ -5,30 +5,32 @@ import {
   TopAppBarRow,
   TopAppBarSection,
   TopAppBarNavigationIcon,
-  TopAppBarTitle,
   TopAppBarFixedAdjust
-} from 'rmwc/TopAppBar';
-import { TextField } from 'rmwc/TextField';
+} from '@rmwc/top-app-bar';
+import { TextField } from '@rmwc/textfield';
 import {
   Drawer,
-  DrawerContent,
-  DrawerToolbarSpacer
-} from 'rmwc/Drawer';
+  DrawerContent
+} from '@rmwc/drawer';
 import {
   ListDivider,
   ListGroup,
   ListItem,
-  ListItemText
-} from 'rmwc/List';
-import { Button, ButtonIcon } from 'rmwc/Button';
-import { Menu, MenuItem, MenuAnchor } from 'rmwc/Menu';
+  ListItemText,
+  ListItemGraphic,
+  ListGroupSubheader
+} from '@rmwc/list';
+import { Button, ButtonIcon } from '@rmwc/button';
+import { Menu, MenuItem, MenuSurfaceAnchor, SimpleMenuSurface } from '@rmwc/menu';
 
 import '../styles/page.scss';
 
 import Router from './atomic-router';
 
 import 'material-components-web/dist/material-components-web.min.css';
-import { Typography } from 'rmwc/Typography';
+import { Typography } from '@rmwc/typography';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Page extends Component {
   constructor(props) {
@@ -42,6 +44,10 @@ class Page extends Component {
     // This binding is necessary to make `this` work in the callback
     this.menuBtnPressed = this.menuBtnPressed.bind(this);
     this.searchPlayer = this.searchPlayer.bind(this);
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0)
   }
 
   menuBtnPressed() {
@@ -79,23 +85,23 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="atomic-app">
         <div>
-          <TopAppBar theme="primary" fixed className="atomic-app-bar">
+          <TopAppBar prominent theme="primary" fixed className="atomic-app-bar">
             <TopAppBarRow>
               <TopAppBarSection alignStart>
-                <TopAppBarNavigationIcon theme="primary" use="menu" onClick={this.menuBtnPressed}/>
-                <TopAppBarTitle>Atomic Stats</TopAppBarTitle>
+                <TopAppBarNavigationIcon theme="primary" icon="menu" style={{ margin: "auto 0" }}onClick={this.menuBtnPressed}/>
+                <img src="/static/idk.png" />
               </TopAppBarSection>
               <TopAppBarSection alignEnd>
                 {this.props.user ? (
-                  <MenuAnchor>
-                    <Button className="atomic-auth-button" onClick={evt => this.setState({'authMenu': !this.state.authMenu})}>
-                      <ButtonIcon>person</ButtonIcon>
-                      {this.props.user.username}
+                  <MenuSurfaceAnchor>
+                    <Button className="atomic-white-ripple atomic-auth-button" onClick={evt => this.setState({'authMenu': !this.state.authMenu})}>
+                      <ButtonIcon style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="user" />} />
+                      My Account
                     </Button>
 
-                    <form id="atomic-logout-form" action="/logout" method="POST" />
+                    <form id="atomic-logout-form" action="/auth/logout" method="POST" />
                     <Menu
                       className="atomic-menu atomic-auth-menu"
                       open={this.state.authMenu}
@@ -103,15 +109,18 @@ class Page extends Component {
                     >
                       <MenuItem onClick={() => {
                         document.getElementById("atomic-logout-form").submit()
-                      }}>Logout</MenuItem>
-                      
+                      }}>
+                      <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ color: "white", fontSize: "19px" }} icon="sign-out-alt" />}/>
+                      Logout
+                      </MenuItem>
                     </Menu>
-                  </MenuAnchor>
+                  </MenuSurfaceAnchor>
                 ) : (
                   <div className="atomic-auth-buttons">
-                    <Button className="atomic-auth-button" onClick={() => Router.pushRoute("login")}>Login</Button>
-                    <Typography use="button" style={{ color: "white", position: "relative", top: "2px", display: "inline-block", padding: "10px" }}>or</Typography>
-                    <Button className="atomic-auth-button" onClick={() => Router.pushRoute("register")}>Register</Button>
+                    <Button className="atomic-auth-button" onClick={() => window.location = "/auth/google"}>
+                      <ButtonIcon style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="sign-in-alt" />} />
+                      Login with google
+                    </Button>
                   </div>
                 )}
               </TopAppBarSection>
@@ -119,37 +128,87 @@ class Page extends Component {
           </TopAppBar>
         </div>
         <div>
-          <Drawer persistent className="atomic-drawer" open={this.state.persistentOpen} style={{ zIndex: "1" }}>
-            <DrawerToolbarSpacer />
-            <DrawerContent className="atomic-drawer-content">
-              <ListGroup>
-                <ListItem>
-                  <ListItemText>Friends</ListItemText>
-                </ListItem>
-                <ListItem>
-                  <ListItemText>My Stats</ListItemText>
-                </ListItem>
-                <ListItem>
-                  <ListItemText>My Profile</ListItemText>
-                </ListItem>
-              </ListGroup>
+        <Drawer dismissible className="atomic-drawer" open={this.state.persistentOpen} style={{ zIndex: "1" }}>
+          <div style={{height: "160px"}} />
+          <DrawerContent className="atomic-drawer-content">
+            <ListGroup>
+              <ListItem onClick={() => Router.pushRoute('index')}>
+                <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="home" />}/>
+                <ListItemText>Home</ListItemText>
+              </ListItem>
               <ListDivider />
+            </ListGroup>
+            {
+              this.props.user && this.props.user['player_id'] ? (
               <ListGroup>
-                <ListItem onClick={() => Router.pushRoute('news')}>
-                  <ListItemText>News</ListItemText>
-                </ListItem>
-                <ListItem onClick={() => Router.pushRoute('shop')}>
-                  <ListItemText>Shop</ListItemText>
-                </ListItem>
+                  <ListItem onClick={() => Router.pushRoute('id', {id: this.props.user['player_id']})}>
+                    <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="chart-pie" />}/>
+                    <ListItemText>My Stats</ListItemText>
+                  </ListItem>
+                <ListDivider />
               </ListGroup>
-            </DrawerContent>
-          </Drawer>
+              ) : null
+            }
+            <ListGroup>
+              <ListItem onClick={() => Router.pushRoute('leaderboard')}>
+                <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="award" />}/>
+                <ListItemText>Leaderboard</ListItemText>
+              </ListItem>
+              <ListItem onClick={() => Router.pushRoute('shop')}>
+                <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="shopping-cart" />}/>
+                <ListItemText>Item Shop</ListItemText>
+              </ListItem>
+              <ListItem onClick={() => Router.pushRoute('news')}>
+                <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="newspaper" />}/>
+                <ListItemText>News</ListItemText>
+              </ListItem>
+            </ListGroup>
+            <ListDivider />
+            {
+              this.props.user ? (
+                <ListGroup>
+                  <ListGroupSubheader className="atomic-drawer-subheader">Shortcuts</ListGroupSubheader>
+                  {                   
+                    this.props.user.shortcuts.map(({ displayName, id }, i) => 
+                      <ListItem key={i} onClick={() => Router.pushRoute('id', {id})}>
+                        <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="user" />}/>
+                        <ListItemText>{displayName}</ListItemText>
+                      </ListItem>
+                    )
+                  }
+                  
+                  <SimpleMenuSurface
+                    className="atomic-menu"
+                    handle={
+                      <ListItem>
+                        <ListItemGraphic style={{ display: "flex" }} icon={<FontAwesomeIcon style={{ fontSize: "19px" }} icon="plus" />}/>
+                        <ListItemText>Add shortcut</ListItemText>
+                      </ListItem>
+                    }
+                  >
+                    <div style={{padding: '1rem', width: '12rem'}}>
+                      <Typography style={{ color: "white" }} use="body1">
+                        Three easy steps to add a shortcut:
+                        <br/><br/>
+                        • Search for your wanted shortcut player in the search
+                        <br/><br/>
+                        • Click the "Add shortcut" button under the player's name
+                        <br/><br/>
+                        • The new shortcut will appear here! 😀
+                      </Typography>
+                    </div>
+                  </SimpleMenuSurface>
+                </ListGroup>
+              ) : null
+            }
+          </DrawerContent>
+        </Drawer>
         </div>
         <TopAppBarFixedAdjust className="atomic-content-wrapper" style={{ display: "flex", flexDirection: "column" }}>
           <div className="atomic-search-wrapper">
             <TextField box onKeyPress={(e) => e.key == "Enter" ? this.searchPlayer() : null} invalid={this.state.invalid} ref="searchField" id="atomic-search-field" className="atomic-text-field atomic-search-field" label="Epic Games Username" />
             <Button raised accent theme="secondary" className="atomic-search-button" onClick={this.searchPlayer}>
-              <ButtonIcon>search</ButtonIcon>
+              <ButtonIcon icon="search" />
               Search
             </Button>
           </div>
@@ -159,7 +218,7 @@ class Page extends Component {
           <div style={{ flexGrow: "1", display: "flex", alignItems: "flex-end" }}>
             <div className="atomic-footer" style={{ width: "100%", marginTop: "50px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", backgroundColor: "var(--drawer-color)", height: "50px" }}>
                 <Typography use="body2" style={{ flexDirection: "row", color: "var(--mdc-theme-primary)", fontSize: "19px" }}>© 2018 Atomic Stats</Typography>
-                <Typography use="caption" style={{ flexDirection: "row", color: "var(--mdc-theme-primary)" }}>This site is not affiliated with Epic Games.</Typography>
+                <Typography use="caption" style={{ flexDirection: "row", color: "var(--mdc-theme-primary)" }}>Fortnite is a registered trademark of Epic Games.</Typography>
             </div>
           </div>
         </TopAppBarFixedAdjust>
@@ -167,132 +226,5 @@ class Page extends Component {
     );
   }
 }
-
-/*class AtomicIconRadioButton extends Component {
-  constructor(props) {
-    super(props);
-
-    // Set toggled as false
-    this.state = {toggled: this.props.selected === undefined ? false : this.props.selected};
-
-    // Create a ref to the element and bind the function
-    this.toggleElement = React.createRef();
-    this.select = this.select.bind(this);
-    this.deselect = this.deselect.bind(this);
-  }
-
-  select() {
-    // If the button isn't toggled, toggle it
-    if (this.state.toggled === false)
-    {
-      this.setState({toggled: true});
-      ReactDOM.findDOMNode(this.toggleElement.current).style.color = this.props.selectedColor;
-
-      // Call the group handler to handle the other radio buttons with the index of the button
-      this.props.groupHandler(this.props.index);
-    }
-  }
-
-  deselect() {
-    this.setState({toggled: false});
-    ReactDOM.findDOMNode(this.toggleElement.current).style.color = this.props.clearColor;
-  }
-
-  render() {
-    return (
-      <IconToggle ref={this.toggleElement}
-        className="atomic-icon-radio-button"
-        style={{color: this.state.toggled ? this.props.selectedColor : this.props.clearColor}}
-        data-icon-inner-selector={this.props.iconSelector}
-        on={{cssClass: this.props.icon}}
-        off={{cssClass: this.props.icon}}
-        onChange={this.select}>
-        <i className={this.props.iconClass} />
-      </IconToggle>
-    )
-  }
-}
-
-class AtomicIconRadioGroup extends Component {
-  constructor(props) {
-    super(props);
-
-    // Bind 'this' to the function
-    this.buttonToggled = this.buttonToggled.bind(this);
-    this.getSelectedValue = this.getSelectedValue.bind(this);
-
-    // Set the current option to not selected
-    this.state = {
-      currentOption: -1
-    }
-
-    // Create array of refs to hold the buttons
-    this.buttonRefs = []
-    for (var i = 0; i < this.props.info.length; i++)
-    {
-      this.buttonRefs[i] = React.createRef();
-    }
-
-    // If a selected index has been sent, toggle the button
-    if (this.props.selectedIndex !== undefined) {
-      // Set the current option to not selected
-      this.state = {
-        currentOption: this.props.selectedIndex
-      }
-    }
-  }
-
-  buttonToggled(index) {
-    // If the current option isn't not selected, deselect the current option
-    if (this.state.currentOption !== -1)
-    {
-      // Deselect the current button
-      this.buttonRefs[this.state.currentOption].current.deselect();
-    }
-
-    // Set the new selected button index
-    this.setState({currentOption: index});
-  }
-
-  getSelectedValue() {
-    if (this.state.currentOption !== -1)
-    {
-      return this.props.info[this.state.currentOption].value;
-    } else {
-      return "None";
-    }
-  }
-
-  render() {
-    var buttons = []
-
-    // Go through the buttons info that were given as a prop, for each one create a button
-    for (var i = 0; i < this.props.info.length; i++)
-    {
-      // Create the button
-      const iconRadioBtn = <AtomicIconRadioButton
-                            ref={this.buttonRefs[i]}
-                            key={i}
-                            selected={this.state.currentOption === i}
-                            clearColor={this.props.clearColor}
-                            selectedColor={this.props.selectedColor}
-                            iconSelector={this.props.info[i].iconSelector}
-                            icon={this.props.info[i].icon}
-                            iconClass={this.props.info[i].iconClass}
-                            index={i}
-                            groupHandler={this.buttonToggled}
-                          />
-
-      // Add the button to the list of buttons
-      buttons.push(iconRadioBtn)
-    }
-
-    return(
-      <div className={this.props.className + ' ' + "atomic-icon-radio-group"}>
-        {buttons}
-      </div>
-    )
-  }
-}*/
 
 export default Page;
