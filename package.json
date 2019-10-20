@@ -19,7 +19,7 @@
     "@zeit/next-sass": "0.2.1-canary.1",
     "bcrypt": "^3.0.0",
     "chart.js": "^2.7.2",
-    "connect-pg-simple": "^5.0.0",
+    "connect-pg-simple": "^6.0.1",
     "dateformat": "^3.0.3",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
